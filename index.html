@@ -5,705 +5,741 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajaz Hussain - BCI Innovator | Official Portfolio</title>
     <style>
-        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0a0f1e;
+            color: #fff;
             line-height: 1.6;
-            color: #333;
         }
 
-        /* Main Container */
-        .portfolio-book {
-            max-width: 1200px;
-            margin: 30px auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* Book Style Pages */
-        .page {
-            padding: 40px;
-            min-height: 600px;
-        }
-
-        /* Page 1 - Left Side */
-        .page-left {
-            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
-            border-right: 2px dashed #764ba2;
-        }
-
-        /* Page 2 - Right Side */
-        .page-right {
-            background: linear-gradient(145deg, #f8f9fa 0%, #ffffff 100%);
-        }
-
-        /* Page Header */
-        .page-header {
+        /* Navigation */
+        .navbar {
+            background: rgba(10, 15, 30, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 3px solid #764ba2;
+            border-bottom: 2px solid #64ffda;
         }
 
-        .page-number {
-            background: #764ba2;
-            color: white;
-            padding: 8px 20px;
-            border-radius: 30px;
+        .logo {
+            font-size: 1.5rem;
             font-weight: bold;
-            letter-spacing: 2px;
+            color: #64ffda;
         }
 
-        .page-title {
-            font-size: 28px;
-            color: #333;
-            font-weight: 700;
-        }
-
-        /* Profile Header */
-        .profile-header {
+        .nav-links {
             display: flex;
-            gap: 30px;
-            margin-bottom: 40px;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: #64ffda;
+            color: #0a0f1e;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+        }
+
+        /* Page Sections */
+        .page-section {
+            min-height: 100vh;
+            padding: 3rem 0;
+            border-bottom: 2px dashed #64ffda;
+        }
+
+        /* Page 1 - Hero Section */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            min-height: 90vh;
             flex-wrap: wrap;
         }
 
-        .profile-image {
-            flex: 0 0 200px;
-            height: 200px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 80px;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
-
-        .profile-info {
+        .hero-content {
             flex: 1;
+            min-width: 300px;
         }
 
-        .profile-info h1 {
-            font-size: 42px;
-            margin-bottom: 10px;
-            color: #333;
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff, #64ffda);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .profile-info .title {
-            font-size: 20px;
-            color: #764ba2;
+        .hero-content h2 {
+            font-size: 1.8rem;
+            color: #64ffda;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #8892b0;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
             font-weight: 600;
-            margin-bottom: 15px;
+            transition: all 0.3s;
         }
 
-        .profile-info .location {
-            color: #666;
-            margin-bottom: 20px;
-            font-size: 18px;
+        .btn-primary {
+            background: #64ffda;
+            color: #0a0f1e;
         }
 
-        .location i {
-            color: #764ba2;
-            margin-right: 10px;
+        .btn-primary:hover {
+            background: #fff;
+            transform: translateY(-3px);
         }
 
-        /* Stats Cards */
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin: 30px 0;
+        .btn-outline {
+            border: 2px solid #64ffda;
+            color: #64ffda;
         }
 
-        .stat-card {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
+        .btn-outline:hover {
+            background: #64ffda;
+            color: #0a0f1e;
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
             text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
         }
 
         .stat-number {
-            font-size: 36px;
-            font-weight: 800;
-            color: #764ba2;
-            margin-bottom: 5px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #64ffda;
         }
 
         .stat-label {
-            color: #666;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: #8892b0;
+            font-size: 1rem;
         }
 
-        /* About Section */
-        .about-section {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            margin: 30px 0;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        .stat-badge {
+            background: rgba(100, 255, 218, 0.1);
+            border: 2px solid #64ffda;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            color: #64ffda;
         }
 
-        .about-section h2 {
-            color: #764ba2;
-            margin-bottom: 20px;
-            font-size: 24px;
-            border-left: 5px solid #667eea;
-            padding-left: 15px;
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
         }
 
-        .about-section p {
-            color: #555;
-            font-size: 16px;
-            margin-bottom: 20px;
-            line-height: 1.8;
-        }
-
-        /* Tags */
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 20px 0;
-        }
-
-        .tag {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 8px 20px;
+        .profile-photo {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
             border-radius: 30px;
-            font-size: 14px;
-            font-weight: 500;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            border: 4px solid #64ffda;
+            box-shadow: 0 20px 40px rgba(100, 255, 218, 0.3);
+            object-fit: cover;
         }
 
-        /* Affiliation Cards */
-        .affiliation-grid {
+        /* Page 2 - Breakthrough Innovations */
+        .section-title {
+            font-size: 2.5rem;
+            color: #64ffda;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #8892b0;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .innovations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .innovation-card {
+            background: #1a1f2f;
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid #2a3a5a;
+            transition: all 0.3s;
+        }
+
+        .innovation-card:hover {
+            transform: translateY(-10px);
+            border-color: #64ffda;
+            box-shadow: 0 20px 40px rgba(100, 255, 218, 0.2);
+        }
+
+        .innovation-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .innovation-card h3 {
+            color: #64ffda;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .innovation-card p {
+            color: #a8b2d1;
+        }
+
+        .innovation-badge {
+            display: inline-block;
+            background: rgba(100, 255, 218, 0.1);
+            color: #64ffda;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            border: 1px solid #64ffda;
+        }
+
+        /* Page 3 - Awards & Recognition */
+        .awards-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin: 30px 0;
+            gap: 2rem;
+            margin: 3rem 0;
         }
 
-        .affiliation-item {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        .award-card {
+            background: #1a1f2f;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #2a3a5a;
         }
 
-        .affiliation-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
+        .award-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 3px solid #64ffda;
         }
 
-        .affiliation-text h4 {
-            color: #333;
-            margin-bottom: 5px;
+        .award-content {
+            padding: 2rem;
         }
 
-        .affiliation-text p {
-            color: #666;
-            font-size: 14px;
+        .award-content h3 {
+            color: #64ffda;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
         }
 
-        /* Achievement Card */
-        .achievement-card {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 25px;
+        .award-content p {
+            color: #a8b2d1;
+        }
+
+        .award-date {
+            color: #64ffda;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            display: block;
+        }
+
+        /* Honorary Doctorate Section */
+        .honorary-section {
+            background: linear-gradient(135deg, #1a1f2f, #0a0f1e);
+            padding: 3rem;
+            border-radius: 30px;
+            margin: 3rem 0;
+            border: 2px solid #64ffda;
+        }
+
+        .honorary-title {
+            color: #64ffda;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .university-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            color: #fff;
+        }
+
+        .university-name {
+            color: #64ffda;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Page 4 - Photo Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .gallery-item {
+            position: relative;
             border-radius: 15px;
-            margin: 30px 0;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
         }
 
-        .achievement-badge {
-            font-size: 50px;
-            margin-bottom: 15px;
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
         }
 
-        .achievement-card h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
         }
 
-        .achievement-card p {
-            font-size: 16px;
-            opacity: 0.9;
-        }
-
-        /* Projects Section */
-        .project-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            border-left: 5px solid #764ba2;
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            color: #fff;
+            padding: 1rem;
+            transform: translateY(100%);
             transition: transform 0.3s;
         }
 
-        .project-card:hover {
-            transform: translateX(10px);
-        }
-
-        .project-title {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .project-icon {
-            font-size: 30px;
-        }
-
-        .project-title h3 {
-            font-size: 22px;
-            color: #333;
-        }
-
-        .project-highlights {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin: 15px 0;
-        }
-
-        .highlight {
-            background: #f0f0f0;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 13px;
-            color: #764ba2;
-            font-weight: 600;
-        }
-
-        .project-description {
-            color: #666;
-            margin: 15px 0;
-            line-height: 1.8;
-        }
-
-        .project-footer {
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-            color: #764ba2;
-            font-weight: 600;
-        }
-
-        /* Vision Box */
-        .vision-box {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 15px;
-            margin: 40px 0;
-            border: 2px dashed #764ba2;
-            position: relative;
-        }
-
-        .vision-box::before {
-            content: '"';
-            position: absolute;
-            top: -20px;
-            left: 20px;
-            font-size: 80px;
-            color: #764ba2;
-            opacity: 0.3;
-            font-family: serif;
-        }
-
-        .vision-text {
-            font-size: 20px;
-            font-style: italic;
-            color: #333;
-            margin-bottom: 15px;
-            padding-left: 40px;
-        }
-
-        .vision-author {
-            text-align: right;
-            color: #764ba2;
-            font-weight: 600;
-            font-size: 18px;
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
         }
 
         /* Contact Section */
         .contact-section {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            padding: 40px;
-            border-radius: 15px;
-            color: white;
-            margin-top: 40px;
+            background: #1a1f2f;
+            padding: 4rem;
+            border-radius: 30px;
+            margin: 3rem 0;
         }
 
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 30px;
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
-        .contact-item {
+        .contact-card {
             text-align: center;
-            padding: 20px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-            transition: transform 0.3s;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.2);
-        }
-
-        .contact-icon {
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
-
-        .contact-item h4 {
-            margin-bottom: 5px;
-            font-size: 16px;
-        }
-
-        .contact-item p {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
-        /* Page Footer */
-        .page-footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 2px dashed #764ba2;
-            display: flex;
-            justify-content: space-between;
-            color: #666;
-            font-size: 14px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .page {
-                padding: 20px;
-            }
-            
-            .profile-header {
-                flex-direction: column;
-            }
-            
-            .stats-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .affiliation-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .page-header {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
-            }
-        }
-
-        /* Navigation Buttons */
-        .nav-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .nav-btn {
-            background: white;
-            color: #764ba2;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            padding: 2rem;
+            background: #0a0f1e;
+            border-radius: 15px;
             transition: all 0.3s;
         }
 
-        .nav-btn:hover {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            transform: scale(1.05);
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border: 1px solid #64ffda;
         }
 
-        .nav-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
+        .contact-icon {
+            font-size: 2.5rem;
+            color: #64ffda;
+            margin-bottom: 1rem;
         }
 
-        /* Two-page view indicator */
-        .book-indicator {
+        /* Page Navigation */
+        .page-indicator {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
+            gap: 1rem;
+            margin: 2rem 0;
+            position: sticky;
+            bottom: 2rem;
+            z-index: 100;
         }
 
         .page-dot {
-            width: 12px;
-            height: 12px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            background: #ddd;
+            background: #1a1f2f;
+            border: 2px solid #64ffda;
+            color: #64ffda;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
             cursor: pointer;
+            transition: all 0.3s;
         }
 
         .page-dot.active {
-            background: #764ba2;
+            background: #64ffda;
+            color: #0a0f1e;
             transform: scale(1.2);
         }
 
-        /* Hide scrollbar for book effect */
-        .portfolio-book {
-            max-height: 90vh;
-            overflow-y: auto;
+        .page-dot:hover {
+            background: #64ffda;
+            color: #0a0f1e;
         }
 
-        .portfolio-book::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .portfolio-book::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-
-        .portfolio-book::-webkit-scrollbar-thumb {
-            background: #764ba2;
-            border-radius: 10px;
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .awards-grid, .gallery-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .university-details {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="portfolio-book" id="portfolioBook">
-        <!-- PAGE 1 - LEFT SIDE -->
-        <div class="page page-left" id="page1">
-            <div class="page-header">
-                <div class="page-number">PAGE 01</div>
-                <div class="page-title">📘 PROFILE & ACHIEVEMENTS</div>
-            </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">AJAZ HUSSAIN</div>
+        <div class="nav-links">
+            <a href="#page1" class="active" onclick="showPage(1)">Page 1</a>
+            <a href="#page2" onclick="showPage(2)">Page 2</a>
+            <a href="#page3" onclick="showPage(3)">Page 3</a>
+            <a href="#page4" onclick="showPage(4)">Page 4</a>
+        </div>
+    </nav>
 
-            <!-- Profile Section -->
-            <div class="profile-header">
-                <div class="profile-image">
-                    🧠
-                </div>
-                <div class="profile-info">
-                    <h1>Ajaz Hussain</h1>
-                    <div class="title">BCI Innovator | Assistive Technology Researcher</div>
-                    <div class="location">
-                        📍 Srinagar, Kashmir | MSME PPDDC Extension Centre
+    <!-- PAGE 1 - HERO SECTION (Screenshot wala) -->
+    <section id="page1" class="page-section">
+        <div class="container">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1>Brain-Computer Interface</h1>
+                    <h2>Ajaz Hussain<br>building minds & machines</h2>
+                    <p>Faculty at MSME PPDC Srinagar · NIT Srinagar. Creator of the world-top-50 soft robotic glove, affordable BCI devices for paralysis, and India's representative at Japan International Youth Summit 2024.</p>
+                    
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary">Explore Work</a>
+                        <a href="#" class="btn btn-outline">Connect</a>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">4</div>
+                            <div class="stat-label">BCI INNOVATIONS</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">₹10k</div>
+                            <div class="stat-label">HOME AUTOMATION</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-badge">top 50<br>GLOBAL SUMMIT '24</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Stats Cards -->
-            <div class="stats-container">
-                <div class="stat-card">
-                    <div class="stat-number">₹10K</div>
-                    <div class="stat-label">Affordable BCI System</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">TOP 50</div>
-                    <div class="stat-label">Global Innovation '24</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">3+</div>
-                    <div class="stat-label">BCI Innovations</div>
-                </div>
-            </div>
-
-            <!-- About Section -->
-            <div class="about-section">
-                <h2>👨‍🔬 About Me</h2>
-                <p>Tech innovator from Srinagar, Kashmir, developing affordable Brain-Computer Interface (BCI) solutions for neuro-rehabilitation. My mission is to bridge the gap between advanced medical technology and accessibility for all.</p>
                 
-                <div class="tags">
-                    <span class="tag">🧠 Brain-Computer Interface</span>
-                    <span class="tag">⚕️ Neuro-Rehabilitation</span>
-                    <span class="tag">🤖 Assistive Robotics</span>
-                    <span class="tag">💡 Affordable Innovation</span>
+                <div class="hero-image">
+                    <!-- PHOTO 1: Profile Photo -->
+                    <img src="images/ajaz-profile.jpg" alt="Ajaz Hussain" class="profile-photo" onerror="this.src='https://via.placeholder.com/400x500/1a1f2f/64ffda?text=Ajaz+Hussain'">
                 </div>
-            </div>
-
-            <!-- Affiliations -->
-            <h2 style="color: #764ba2; margin: 30px 0 20px;">🏛️ Institutional Affiliations</h2>
-            <div class="affiliation-grid">
-                <div class="affiliation-item">
-                    <div class="affiliation-icon">🏭</div>
-                    <div class="affiliation-text">
-                        <h4>MSME PPDDC</h4>
-                        <p>Extension Centre, Srinagar</p>
-                    </div>
-                </div>
-                <div class="affiliation-item">
-                    <div class="affiliation-icon">🎓</div>
-                    <div class="affiliation-text">
-                        <h4>NIT Srinagar</h4>
-                        <p>Expert Faculty</p>
-                    </div>
-                </div>
-                <div class="affiliation-item">
-                    <div class="affiliation-icon">🇮🇳</div>
-                    <div class="affiliation-text">
-                        <h4>Ministry of MSME</h4>
-                        <p>Funded Projects</p>
-                    </div>
-                </div>
-                <div class="affiliation-item">
-                    <div class="affiliation-icon">🇯🇵</div>
-                    <div class="affiliation-text">
-                        <h4>Japan Youth Summit</h4>
-                        <p>Top 50 Global Innovation 2024</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Achievement Highlight -->
-            <div class="achievement-card">
-                <div class="achievement-badge">🏆</div>
-                <h3>Global Recognition</h3>
-                <p>Soft Robotic Glove selected among TOP 50 innovations</p>
-                <p style="margin-top: 10px; font-size: 14px;">Japan International Youth Summit 2024</p>
             </div>
         </div>
+    </section>
 
-        <!-- PAGE 2 - RIGHT SIDE -->
-        <div class="page page-right" id="page2">
-            <div class="page-header">
-                <div class="page-number">PAGE 02</div>
-                <div class="page-title">🚀 INNOVATIONS & PROJECTS</div>
-            </div>
+    <!-- PAGE 2 - BREAKTHROUGH INNOVATIONS -->
+    <section id="page2" class="page-section">
+        <div class="container">
+            <h2 class="section-title">Breakthrough Innovations</h2>
+            <p class="section-subtitle">low-cost, high-impact assistive technologies · powered by brain signals</p>
 
-            <!-- Project 1: Soft Robotic Glove -->
-            <div class="project-card">
-                <div class="project-title">
-                    <span class="project-icon">🖐️</span>
-                    <h3>Soft Robotic Glove for Neuro-Rehabilitation</h3>
+            <div class="innovations-grid">
+                <div class="innovation-card">
+                    <div class="innovation-icon">🖐️</div>
+                    <h3>Soft Robotic Glove</h3>
+                    <p>World top-50 innovation for neuro-rehabilitation. BCI-controlled glove helping paralyzed patients regain hand movement.</p>
+                    <span class="innovation-badge">🏆 Top 50 Global '24</span>
                 </div>
-                <div class="project-highlights">
-                    <span class="highlight">🏆 Top 50 Global Innovation 2024</span>
-                    <span class="highlight">🧠 BCI Controlled</span>
-                    <span class="highlight">💰 MSME Funded</span>
-                </div>
-                <p class="project-description">
-                    A revolutionary brain-controlled robotic glove that helps paralyzed patients perform hand exercises. Uses EEG headset to capture brain signals and translates them into precise glove movements, replacing traditional physiotherapy with robot-assisted active training.
-                </p>
-                <div class="project-footer">
-                    👥 Developed with 3 mechanical engineering students
-                </div>
-            </div>
 
-            <!-- Project 2: Home Automation -->
-            <div class="project-card">
-                <div class="project-title">
-                    <span class="project-icon">🏠</span>
-                    <h3>BCI Home Automation System</h3>
+                <div class="innovation-card">
+                    <div class="innovation-icon">🏠</div>
+                    <h3>BCI Home Automation</h3>
+                    <p>Under ₹10,000 system to control lights, fans, and appliances using brain signals. Making smart homes accessible.</p>
+                    <span class="innovation-badge">💰 Under ₹10k</span>
                 </div>
-                <div class="project-highlights">
-                    <span class="highlight">💰 Under ₹10,000</span>
-                    <span class="highlight">🧠 Brain-Wave Sensor</span>
-                    <span class="highlight">📱 Bluetooth Control</span>
+
+                <div class="innovation-card">
+                    <div class="innovation-icon">🦽</div>
+                    <h3>EEG Smart Wheelchair</h3>
+                    <p>Thought-controlled wheelchair with destination mapping. Affordable mobility solution for paralyzed patients.</p>
+                    <span class="innovation-badge">⚡ Attention Control</span>
                 </div>
-                <p class="project-description">
-                    World's most affordable BCI home automation for paralyzed patients. Control lights, fans, and up to 6 appliances using pure brain signals. System architecture: Brain-wave sensor → Signal processing → Bluetooth transmission → Relay circuit control.
-                </p>
-                <div class="project-footer">
-                    ⚡ Making smart homes accessible to all
+
+                <div class="innovation-card">
+                    <div class="innovation-icon">🧠</div>
+                    <h3>Neuro-Rehab System</h3>
+                    <p>Complete BCI platform for rehabilitation exercises and neural training.</p>
+                    <span class="innovation-badge">🔬 Research Stage</span>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Project 3: EEG Wheelchair -->
-            <div class="project-card">
-                <div class="project-title">
-                    <span class="project-icon">🦽</span>
-                    <h3>EEG-Controlled Smart Wheelchair</h3>
-                </div>
-                <div class="project-highlights">
-                    <span class="highlight">👁️ Attention/Blink Control</span>
-                    <span class="highlight">🗺️ Destination Mapping</span>
-                    <span class="highlight">💪 Affordable Alternative</span>
-                </div>
-                <p class="project-description">
-                    Innovative wheelchair operated purely by brain signals - either attention levels or eye blinks. Features intelligent destination mapping and navigation. Designed to be significantly more affordable than current market models while maintaining high functionality.</p>
-                    </div>
-                </section>
+    <!-- PAGE 3 - AWARDS & RECOGNITION (Honorary Doctorate) -->
+    <section id="page3" class="page-section">
+        <div class="container">
+            <h2 class="section-title">Awards & Recognition</h2>
+            <p class="section-subtitle">Honored for contributions to BCI and assistive technology</p>
 
-                <!-- Technology Stack -->
-                <section style="margin: 4rem 0;">
-                    <h2 style="color: #64ffda; font-size: 2rem; margin-bottom: 2rem;">🧪 Core Technologies</h2>
-                    <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
-                        <span class="badge" style="font-size: 1rem; padding: 0.5rem 1.5rem;">Brain-Computer Interface (BCI)</span>
-                        <span class="badge" style="font-size: 1rem; padding: 0.5rem 1.5rem;">EEG Signal Processing</span>
-                        <span class="badge" style="font-size: 1rem; padding: 0.5rem 1.5rem;">Neuro-Rehabilitation</span>
-                        <span class="badge" style="font-size: 1rem; padding: 0.5rem 1.5rem;">Assistive Robotics</span>
-                        <span class="badge" style="font-size: 1rem; padding: 0.5rem 1.5rem;">IoT & Embedded Systems</span>
-                        <span class="badge" style="font-size: 1rem; padding: 0.5rem 1.5rem;">Wireless Control (Bluetooth)</span>
-                    </div>
-                </section>
+            <!-- Honorary Doctorate Section -->
+            <div class="honorary-section">
+                <h3 class="honorary-title">🎓 Honorary Doctorate Award Ceremony</h3>
                 
-                <!-- Vision Statement -->
-                <section style="background: linear-gradient(135deg, #1a1f2f 0%, #0a0f1e 100%); padding: 3rem; border-radius: 20px; margin: 4rem 0; border: 1px solid #2a3a5a;">
-                    <h3 style="color: #64ffda; font-size: 1.8rem; margin-bottom: 1rem;">💭 My Vision</h3>
-                    <p style="font-size: 1.2rem; font-style: italic; color: #e5e9f0;">"Advanced medical facilities exist, but a common person often cannot afford them. I want to make quality healthcare affordable for all, empowering people with disabilities to be self-sufficient through technology."</p>
-                    <p style="margin-top: 1rem; color: #64ffda;">— Ajaz Hussain</p>
-                </section>
+                <div class="university-details">
+                    <div>
+                        <p class="university-name">KARVAN UNIVERSITY OF ENGINEERING AND TECHNOLOGY</p>
+                        <p>DEPARTMENT OF ELECTRICAL ENGINEERING</p>
+                        <p style="margin-top: 1rem;">30th Anniversary</p>
+                        <p>Honorary Doctorate Award Ceremony</p>
+                        <p style="color: #64ffda;">(Under The KARVANSHALA)</p>
+                    </div>
+                    <div>
+                        <p>Institute of Electrical Engineering</p>
+                        <p>Faculty of Engineering</p>
+                        <p>Department of Electrical Engineering</p>
+                        <p>University of Technology, Cairo</p>
+                        <p style="margin-top: 1rem; color: #8892b0;">HIGHER EDUCATION AUTHORITY OF THE GOVERNORATE OF KARVAN</p>
+                        <p style="color: #8892b0;">NATIONAL CENTRE FOR MATHEMATICS</p>
+                        <p style="color: #8892b0;">INSTITUTE</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Awards Grid with Photos -->
+            <div class="awards-grid">
+                <div class="award-card">
+                    <!-- PHOTO 2: Japan Summit -->
+                    <img src="images/japan-summit-2024.jpg" alt="Japan International Youth Summit" class="award-image" onerror="this.src='https://via.placeholder.com/600x400/1a1f2f/64ffda?text=Japan+Summit+2024'">
+                    <div class="award-content">
+                        <h3>🏆 Top 50 Global Innovation 2024</h3>
+                        <p>Japan International Youth Summit - Represented India with Soft Robotic Glove innovation</p>
+                        <span class="award-date">📍 Tokyo, Japan | 2024</span>
+                    </div>
+                </div>
+
+                <div class="award-card">
+                    <!-- PHOTO 3: Honorary Doctorate -->
+                    <img src="images/honorary-doctorate-cairo.jpg" alt="Honorary Doctorate Ceremony" class="award-image" onerror="this.src='https://via.placeholder.com/600x400/1a1f2f/64ffda?text=Honorary+Doctorate'">
+                    <div class="award-content">
+                        <h3>🎓 Honorary Doctorate</h3>
+                        <p>Karvan University of Engineering and Technology, Cairo</p>
+                        <p>For contributions to Brain-Computer Interface and Assistive Technology</p>
+                        <span class="award-date">📍 Cairo, Egypt | 30th Anniversary Ceremony</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PHOTO 4: Pic-1-Ajaz-being-honoured -->
+            <div style="margin-top: 3rem;">
+                <img src="images/ajaz-being-honoured.jpg" alt="Ajaz being honoured for innovations" style="width: 100%; border-radius: 20px; border: 3px solid #64ffda;" onerror="this.src='https://via.placeholder.com/1200x600/1a1f2f/64ffda?text=Ajaz+being+honoured+for+innovations'">
+                <p style="text-align: center; color: #64ffda; margin-top: 1rem;">Ajaz Hussain being honoured for his innovations</p>
             </div>
         </div>
-    </main>
+    </section>
 
-    <footer id="contact">
-        <h3 style="color: #64ffda; margin-bottom: 1rem;">📬 Connect & Collaborate</h3>
-        <div class="contact-links">
-            <a href="#">📧 Email: ajaz.hussain@ppdc.org</a>
-            <a href="#">🔗 LinkedIn: /in/ajaz-hussain-bci</a>
-            <a href="#">🐦 Twitter: @ajaz_innovates</a>
+    <!-- PAGE 4 - PHOTO GALLERY & CONTACT -->
+    <section id="page4" class="page-section">
+        <div class="container">
+            <h2 class="section-title">Photo Gallery</h2>
+            <p class="section-subtitle">Moments from innovation journey & recognition ceremonies</p>
+
+            <div class="gallery-grid">
+                <!-- PHOTO 5: BCI Demonstration -->
+                <div class="gallery-item">
+                    <img src="images/gallery/bci-demonstration.jpg" alt="BCI Demonstration" class="gallery-img" onerror="this.src='https://via.placeholder.com/400x400/1a1f2f/64ffda?text=BCI+Demonstration'">
+                    <div class="gallery-caption">BCI Demonstration at MSME PPDC</div>
+                </div>
+                
+                <!-- PHOTO 6: Japan Summit Gallery -->
+                <div class="gallery-item">n+Summit'">
+                    <div class="gallery-caption">Japan International Youth Summit 2024</div>
+                </div>
+                
+                <!-- PHOTO 7: Honorary Doctorate Ceremony -->
+                <div class="gallery-item">
+                    <img src="images/gallery/doctorate-ceremony.jpg" alt="Honorary Doctorate" class="gallery-img" onerror="this.src='https://via.placeholder.com/400x400/1a1f2f/64ffda?text=Honorary+Doctorate'">
+                    <div class="gallery-caption">Honorary Doctorate Ceremony - Cairo</div>
+                </div>
+                
+                <!-- PHOTO 8: Soft Robotic Glove -->
+                <div class="gallery-item">
+                    <img src="images/gallery/soft-robotic-glove.jpg" alt="Soft Robotic Glove" class="gallery-img" onerror="this.src='https://via.placeholder.com/400x400/1a1f2f/64ffda?text=Soft+Robotic+Glove'">
+                    <div class="gallery-caption">Soft Robotic Glove Innovation</div>
+                </div>
+                    <!-- PHOTO 9: NIT Srinagar -->
+                <div class="gallery-item">
+                    <img src="images/gallery/nit-srinagar.jpg" alt="NIT Srinagar" class="gallery-img" onerror="this.src='https://via.placeholder.com/400x400/1a1f2f/64ffda?text=NIT+Srinagar'">
+                    <div class="gallery-caption">Expert Faculty at NIT Srinagar</div>
+                </div>
+                
+                <!-- PHOTO 10: MSME PPDC -->
+                <div class="gallery-item">
+                    <img src="images/gallery/msme-ppdc.jpg" alt="MSME PPDC" class="gallery-img" onerror="this.src='https://via.placeholder.com/400x400/1a1f2f/64ffda?text=MSME+PPDC'">
+                    <div class="gallery-caption">MSME PPDDC Extension Centre</div>
+                </div>
+            </div>
+            <!-- Contact Section -->
+            <div class="contact-section">
+                <h2 style="color: #64ffda; text-align: center; margin-bottom: 2rem;">Connect with Ajaz Hussain</h2>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <h3>Email</h3>
+                        <p style="color: #64ffda;">ajaz.hussain@ppdc.org</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">🔗</div>
+                        <h3>LinkedIn</h3>
+                        <p style="color: #64ffda;">/in/ajaz-hussain-bci</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">🐦</div>
+                        <h3>Twitter/X</h3>
+                        <p style="color: #64ffda;">@ajaz_innovates</p>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 3rem;">
+                    <p style="color: #8892b0;">📍 MSME PPDDC Extension Centre, Srinagar, Jammu & Kashmir</p>
+                    <p style="color: #64ffda; margin-top: 1rem;">Faculty at NIT Srinagar | Expert Faculty</p>
+                </div>
+            </div>
         </div>
-        <p style="color: #8892b0; margin-top: 2rem;">📍 MSME PPDDC Extension Centre, Srinagar, Kashmir</p>
-          <p style="color: #8892b0; font-size: 0.8rem; margin-top: 2rem;">© 2026 Ajaz Hussain - Innovator in Brain-Computer Interface & Assistive Technology</p>
+    </section>
+    <!-- Page Navigation Dots -->
+    <div class="page-indicator">
+        <div class="page-dot active" onclick="showPage(1)">1</div>
+        <div class="page-dot" onclick="showPage(2)">2</div>
+        <div class="page-dot" onclick="showPage(3)">3</div>
+        <div class="page-dot" onclick="showPage(4)">4</div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: #0a0f1e; padding: 2rem; text-align: center; border-top: 1px solid #2a3a5a;">
+        <p style="color: #8892b0;">© 2026 Ajaz Hussain - Innovator in Brain-Computer Interface & Assistive Technology</p>
+        <p style="color: #64ffda; margin-top: 1rem;">building minds & machines</p>
     </footer>
-    </body>
+        <script>
+        // Page navigation function
+        function showPage(pageNumber) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Show selected page
+            document.getElementById(`page${pageNumber}`).style.display = 'block';
+            
+            // Update active states
+            document.querySelectorAll('.nav-links a').forEach((link, index) => {
+                if (index === pageNumber - 1) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+            
+            // Update page dots
+            document.querySelectorAll('.page-dot').forEach((dot, index) => {
+                if (index === pageNumber - 1) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+            // Show page 1 by default
+        showPage(1);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const activePage = document.querySelector('.page-dot.active');
+            if (!activePage) return;
+            
+            let currentPage = parseInt(activePage.textContent);
+            
+            if (e.key === 'ArrowRight' && currentPage < 4) {
+                showPage(currentPage + 1);
+            } else if (e.key === 'ArrowLeft' && currentPage > 1) {
+                showPage(currentPage - 1);
+            }
+        });
+    </script>
+</body>
 </html>
