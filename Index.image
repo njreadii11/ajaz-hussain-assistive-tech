@@ -1,11 +1,16 @@
 <!-- Page 1 - Profile -->
-<img src="images/Ajajz.jpeg.jpg" alt="Ajaz Hussain" class="profile-photo" 
+<img src="images/Aijaz.jpeg" alt="Ajaz Hussain" class="profile-photo" 
      onerror="this.src='https://via.placeholder.com/400x500/1a1f2f/64ffda?text=Ajaz+Hussain'">
 
-<!-- Page 3 - Japan Summit -->
+<!-- Page 3 - Japan Summit (yeh photo ka naam kya hai?) -->
 <img src="images/image.jpg" alt="Japan International Youth Summit" class="award-image" 
      onerror="this.src='https://via.placeholder.com/600x400/1a1f2f/64ffda?text=Japan+Summit+2024'">
 
-<!-- Page 3 - Honorary Doctorate -->
-<img src="images/msme.jpg" alt="Honorary Doctorate Ceremony" class="award-image" 
+<!-- Page 3 - Honorary Doctorate (yeh photo ka naam kya hai?) -->
+<img src="images/ssme.jpg" alt="Honorary Doctorate Ceremony" class="award-image" 
      onerror="this.src='https://via.placeholder.com/600x400/1a1f2f/64ffda?text=Honorary+Doctorate'">
+
+<!-- Page 3 - Honoured Photo (MSME wali) -->
+<img src="images/msme" alt="Ajaz being honoured" 
+     style="width: 100%; border-radius: 20px; border: 3px solid #64ffda;"
+     onerror="this.src='https://via.placeholder.com/1200x600/1a1f2f/64ffda?text=Ajaz+being+honoured'">
