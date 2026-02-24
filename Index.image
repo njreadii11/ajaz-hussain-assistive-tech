@@ -1,5 +1,5 @@
 <!-- Page 1 - Profile -->
-<img src="images/Aijaz.jpeg.jpg" alt="Ajaz Hussain" class="profile-photo" 
+<img src="images/Ajajz.jpeg.jpg" alt="Ajaz Hussain" class="profile-photo" 
      onerror="this.src='https://via.placeholder.com/400x500/1a1f2f/64ffda?text=Ajaz+Hussain'">
 
 <!-- Page 3 - Japan Summit -->
@@ -9,4 +9,3 @@
 <!-- Page 3 - Honorary Doctorate -->
 <img src="images/msme.jpg" alt="Honorary Doctorate Ceremony" class="award-image" 
      onerror="this.src='https://via.placeholder.com/600x400/1a1f2f/64ffda?text=Honorary+Doctorate'">
-
