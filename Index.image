@@ -1,0 +1,14 @@
+ajaz-hussain-portfolio/
+│
+├── index.html
+├── images/
+│   ├── profile.jpg           (Aapki profile photo)
+│   ├── japan-summit.jpg       (Japan Summit wali photo)
+│   ├── honorary-doctorate.jpg (Honorary Doctorate ceremony)
+│   ├── honoured-photo.jpg     (Pic-1-Ajaz-being-honoured)
+│   ├── bci-demo.jpg
+│   ├── soft-robotic-glove.jpg
+│   └── gallery/
+│       ├── photo1.jpg
+│       ├── photo2.jpg
+│       └── ...
