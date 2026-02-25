@@ -3,426 +3,474 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajaz Hussain · 3D BCI profile</title>
-    <!-- Font Awesome for clean icons (optional but adds style) -->
+    <title>Ajaz Hussain · 3D multi‑page photo story</title>
+    <!-- Font Awesome 6 (free) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts Inter (clean) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at 20% 30%, #0a1428, #02040c);
             min-height: 100vh;
-            background: radial-gradient(circle at 30% 30%, #0b1120, #030614);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1rem;
+            padding: 1.5rem;
+            color: #edf3ff;
         }
 
-        /* main 3D card – subtle perspective + preserve-3d for children */
-        .card-3d {
-            max-width: 1100px;
+        /* main 3D card container – acts like a turning page */
+        .book-3d {
+            max-width: 1300px;
             width: 100%;
-            background: rgba(18, 25, 45, 0.65);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(90, 150, 255, 0.25);
+            background: rgba(12, 22, 40, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 200, 255, 0.2);
             border-radius: 3rem;
-            padding: 2.5rem 2rem;
-            box-shadow: 0 40px 70px rgba(0, 0, 0, 0.6), 
-                        0 0 0 1px rgba(0, 255, 255, 0.1) inset,
-                        0 0 30px rgba(0, 180, 255, 0.3);
-            transform: perspective(1200px) rotateX(2deg) rotateY(-1deg) rotateZ(0.5deg);
-            transition: transform 0.4s ease;
-            color: #eef5ff;
+            padding: 2.2rem 2rem;
+            box-shadow: 0 40px 80px -10px #000000d0, 0 0 0 1px rgba(0, 255, 255, 0.15) inset, 0 0 60px #003f7f40;
+            transform: perspective(2000px) rotateX(2deg) rotateY(-2deg);
+            transition: transform 0.3s ease;
         }
 
-        .card-3d:hover {
-            transform: perspective(1200px) rotateX(1deg) rotateY(-2deg) rotateZ(0.8deg) scale(1.01);
-            box-shadow: 0 50px 90px rgba(0, 20, 40, 0.9), 0 0 0 2px rgba(0, 240, 255, 0.3) inset;
+        .book-3d:hover {
+            transform: perspective(2000px) rotateX(1deg) rotateY(-3deg) scale(1.005);
+            border-color: #1eb0ff60;
         }
 
-        /* inner content uses translateZ to lift layers */
-        .content-wrapper {
-            transform: translateZ(30px);
+        /* pages wrapper (slides) */
+        .pages-container {
             display: flex;
             flex-direction: column;
-            gap: 2.5rem;
+            gap: 3rem;
         }
 
-        /* header row with name/title + floating metrics */
-        .top-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .name-title h1 {
-            font-size: 3.2rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            background: linear-gradient(to right, #ffffff, #b0d0ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 10px 20px rgba(0, 50, 150, 0.5);
-            transform: translateZ(40px);
-        }
-
-        .name-title .sub {
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: #aac8ff;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 0.2rem;
+        /* each page row – we create three distinct "pages" stacked with 3D photo tiles */
+        .page {
+            transform-style: preserve-3d;
             transform: translateZ(25px);
-        }
-
-        .name-title .sub i {
-            color: #5f9eff;
-            font-size: 1.8rem;
-        }
-
-        .stats-3d {
-            display: flex;
-            gap: 2.2rem;
-            background: rgba(8, 15, 30, 0.7);
-            padding: 1.2rem 2.2rem;
-            border-radius: 60px;
-            border: 1px solid rgba(70, 160, 255, 0.4);
-            box-shadow: 0 15px 30px -8px #00000080, 0 0 15px #2f6fbb40;
-            transform: translateZ(45px) rotateY(2deg);
+            background: rgba(5, 15, 30, 0.5);
+            border-radius: 2.5rem;
+            padding: 2rem 2rem 1.8rem;
+            border: 1px solid #2e5580;
+            box-shadow: 0 30px 40px -15px black, 0 0 0 1px #2aa9ff30 inset;
             backdrop-filter: blur(8px);
         }
 
-        .stat-item {
+        /* page 1 — header & intro stats (exactly as screenshot) */
+        .page-1 {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: space-between;
             align-items: center;
+            gap: 2rem;
+        }
+        .identity h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(145deg, #ffffff, #afd0ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.1;
+            text-shadow: 0 8px 12px #001438;
+        }
+        .identity .tagline {
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #b0d2ff;
+            margin-top: 0.3rem;
+        }
+        .identity .tagline i {
+            color: #3aa8ff;
         }
 
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: 700;
-            line-height: 1.2;
-            background: linear-gradient(180deg, #fff, #b0d5ff);
-            background-clip: text;
+        .stat-pack {
+            display: flex;
+            gap: 2.5rem;
+            background: #0c1a30aa;
+            padding: 1.2rem 2.2rem;
+            border-radius: 80px;
+            border: 1px solid #2389df;
+            box-shadow: 0 25px 30px -15px #000000, 0 0 20px #0055aa;
+            backdrop-filter: blur(8px);
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-num {
+            font-size: 2.4rem;
+            font-weight: 800;
+            background: linear-gradient(white, #a0c8ff);
             -webkit-background-clip: text;
+            background-clip: text;
             color: transparent;
         }
-
         .stat-label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
+            font-size: 1rem;
             letter-spacing: 0.1em;
-            color: #9bb9ff;
+            color: #adcbff;
         }
-
         .stat-label i {
-            margin-right: 4px;
-            font-size: 0.8rem;
-            color: #3ecf8e;
+            color: #50d0a0;
         }
 
-        /* description line – 3D lift */
-        .description {
-            font-size: 1.3rem;
-            max-width: 80%;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 1rem 2rem;
-            border-radius: 60px;
-            border-left: 4px solid #2aa9ff;
-            transform: translateZ(35px);
-            box-shadow: -5px 10px 20px #00000050;
-            backdrop-filter: blur(5px);
-            line-height: 1.5;
-        }
-
-        .description strong {
-            color: white;
-            font-weight: 600;
-        }
-
-        /* button group */
-        .button-group {
-            display: flex;
-            gap: 1.8rem;
-            transform: translateZ(50px);
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2.8rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.4rem;
-            letter-spacing: 0.03em;
-            background: rgba(20, 35, 65, 0.7);
-            backdrop-filter: blur(10px);
-            color: white;
-            border: 1px solid rgba(0, 200, 255, 0.5);
-            box-shadow: 0 15px 25px -8px #000000cc, 0 0 20px #00a6ff4d;
-            transition: 0.2s;
-            cursor: default; /* not actual link, just style */
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            transform: translateZ(20px);
-            text-decoration: none;
-            border-image: none;
-        }
-
-        .btn-primary {
-            background: linear-gradient(145deg, #0055c7, #002a85);
-            border: 1px solid #7ac4ff;
-            box-shadow: 0 20px 30px -8px #001c3d, 0 0 30px #0080ff;
-        }
-
-        .btn i {
-            font-size: 1.6rem;
-        }
-
-        /* 3d tile grid – the "4 innovations, 10k home, top 50" part */
-        .achievement-grid {
+        /* page 2 — description + photo strip (first photo) */
+        .page-2 {
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
-            margin-top: 1.2rem;
-            transform-style: preserve-3d;
-            transform: translateZ(20px);
+            align-items: center;
         }
-
-        .tile-3d {
-            flex: 1 1 180px;
-            background: rgba(8, 18, 38, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(60, 160, 255, 0.4);
-            border-radius: 2rem;
-            padding: 1.8rem 1rem;
+        .desc-wide {
+            flex: 2 1 300px;
+            font-size: 1.3rem;
+            background: #0a1830b0;
+            padding: 1.8rem 2.2rem;
+            border-radius: 3rem;
+            border-left: 6px solid #2aa9ff;
+            box-shadow: -10px 15px 30px #00000070;
+            backdrop-filter: blur(4px);
+            line-height: 1.6;
+        }
+        .desc-wide strong {
+            color: white;
+            font-weight: 700;
+        }
+        .photo-tile {
+            flex: 1 1 200px;
+            background: #102036;
+            border-radius: 2.5rem;
+            padding: 1.2rem 1.2rem 1.5rem;
+            border: 2px solid #3299ff;
+            transform: rotateY(3deg) translateZ(20px);
+            box-shadow: 20px 20px 30px #000000b0, 0 0 30px #0080ff80;
             text-align: center;
-            box-shadow: 0 20px 30px -12px black, 0 0 0 1px rgba(0, 255, 255, 0.2) inset;
-            transform: rotateY(2deg) rotateX(1deg) translateZ(25px);
-            transition: 0.25s;
+        }
+        .photo-placeholder {
+            width: 100%;
+            aspect-ratio: 1 / 1.1;
+            background: linear-gradient(145deg, #1b3a5e, #0a1a2e);
+            border-radius: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #b0e0ff;
+            border: 1px solid cyan;
+            box-shadow: inset 0 0 30px #0055aa;
+            font-size: 1rem;
+        }
+        .photo-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+            color: #9fcbff;
+            text-shadow: 0 0 15px white;
+        }
+        .photo-caption {
+            margin-top: 0.8rem;
+            font-weight: 600;
+            color: #c5e2ff;
         }
 
-        .tile-3d:hover {
-            transform: rotateY(0deg) rotateX(0deg) translateZ(45px);
-            border-color: #00dcff;
-            box-shadow: 0 30px 40px -10px #001842, 0 0 30px #00a6ff;
+        /* page 3 — three core tiles (exactly as second screenshot) + second photo integrated */
+        .page-3 {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: stretch;
         }
-
-        .tile-big-number {
-            font-size: 3.8rem;
+        .tiles-row {
+            flex: 3;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+        }
+        .mini-tile {
+            flex: 1 1 150px;
+            background: #0d1f38e0;
+            backdrop-filter: blur(8px);
+            border: 1px solid #0066cc;
+            border-radius: 2rem;
+            padding: 1.8rem 0.8rem;
+            text-align: center;
+            transform: translateZ(30px) rotateY(0.5deg);
+            box-shadow: 0 20px 25px -8px #000000, 0 0 0 1px #40a0ff inset;
+            transition: 0.2s;
+        }
+        .mini-tile:hover {
+            transform: translateZ(45px) scale(1.02);
+            border-color: #1ed0ff;
+            box-shadow: 0 30px 35px -10px #001e3c, 0 0 30px #0084ff;
+        }
+        .tile-big-num {
+            font-size: 3.2rem;
             font-weight: 800;
-            line-height: 1;
-            background: linear-gradient(135deg, #fff, #82cbff);
+            background: linear-gradient(white, #80c0ff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            filter: drop-shadow(0 8px 6px #00000060);
+            filter: drop-shadow(0 6px 6px black);
         }
-
-        .tile-label {
+        .tile-head {
             font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: #b5d5ff;
-            margin-top: 0.2rem;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+            color: #bdd9ff;
         }
-
-        .tile-small {
+        .tile-sub {
             font-size: 0.9rem;
-            color: #8ec8ff;
-            margin-top: 0.5rem;
-            border-top: 1px dashed #3e6c9e;
+            margin-top: 0.8rem;
+            color: #70b0ff;
+            border-top: 1px dashed #2b5580;
             padding-top: 0.5rem;
         }
-
-        /* global summit special tile */
-        .tile-special .tile-big-number {
-            font-size: 3rem;
+        .tile-sub i {
+            color: #3ed0a0;
         }
-        .badge-global {
-            background: #00a6ff30;
-            border-radius: 100px;
-            padding: 0.2rem 1rem;
-            font-size: 0.8rem;
+
+        /* second photo tile inside page 3 */
+        .photo-tile-2 {
+            flex: 1 1 200px;
+            background: #0a1c34;
+            border-radius: 2.2rem;
+            padding: 1rem 1rem 1.5rem;
+            border: 2px solid #0a9eff;
+            transform: rotateY(-2deg) translateZ(30px);
+            box-shadow: -20px 20px 35px #000000, 0 0 30px #0077ff;
+            text-align: center;
+        }
+
+        /* page 4 — final links & extra photo (third photo) */
+        .page-4 {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .button-panel {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .btn-3d {
+            padding: 1rem 3rem;
+            font-size: 1.6rem;
             font-weight: 600;
-            display: inline-block;
-            margin-top: 0.7rem;
-            border: 1px solid cyan;
-            text-transform: uppercase;
+            border-radius: 80px;
+            background: rgba(15, 30, 55, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid #4ab0ff;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 25px 30px -12px #000000e0, 0 0 20px #0099ff;
+            transform: translateZ(35px);
+            transition: 0.15s;
+            cursor: default;
+            text-decoration: none;
+        }
+        .btn-3d i {
+            font-size: 1.8rem;
+        }
+        .btn-primary-3d {
+            background: linear-gradient(160deg, #003da0, #001b50);
+            border-color: #9ad0ff;
+            box-shadow: 0 25px 35px -10px #00166b, 0 0 40px #0080ff;
         }
 
-        /* bottom connect line */
-        .connect-line {
+        .photo-tile-3 {
+            flex: 0 1 240px;
+            background: #102c44;
+            border-radius: 2.5rem;
+            padding: 1.2rem;
+            border: 2px solid #0a9eff;
+            transform: rotateY(4deg) translateZ(25px);
+            box-shadow: 20px 20px 30px black, 0 0 30px #0077ff;
+        }
+
+        /* footer line (page 5) */
+        .footer-note {
+            margin-top: 1rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transform: translateZ(30px);
-            margin-top: 1rem;
-            font-size: 1.1rem;
-            border-top: 1px solid #2f66a0;
+            transform: translateZ(20px);
+            color: #90b0e0;
+            border-top: 1px solid #2f5f9f;
             padding-top: 1.5rem;
-            color: #b2d0ff;
+            font-size: 1.1rem;
         }
-
-        .connect-line i {
-            color: #3ecf8e;
-            margin: 0 0.2rem;
+        .footer-note i {
+            color: #50d0a0;
         }
-        .social-icons a {
-            color: #c6deff;
-            margin-left: 1.5rem;
-            font-size: 1.6rem;
+        .social a {
+            color: #b5d0ff;
+            margin-left: 2rem;
+            font-size: 1.7rem;
             transition: 0.2s;
-            text-decoration: none;
         }
-        .social-icons a:hover {
+        .social a:hover {
             color: white;
-            text-shadow: 0 0 15px cyan;
+            text-shadow: 0 0 20px cyan;
         }
 
-        /* 3D decorative elements (floating glow) */
-        .glow-ball {
+        /* ambient glows */
+        .ambient-glow {
             position: absolute;
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle at 30% 30%, #48b5ff20, transparent 70%);
+            width: 400px;
+            height: 400px;
+            background: #0055ff20;
             border-radius: 50%;
-            filter: blur(60px);
+            filter: blur(90px);
             z-index: -1;
-            top: -50px;
+            top: -100px;
             right: -50px;
         }
-
-        .glow-ball2 {
-            width: 350px;
-            height: 350px;
-            background: #002aff20;
-            filter: blur(90px);
+        .ambient-glow2 {
+            width: 500px;
+            height: 500px;
+            background: #4000ff20;
+            bottom: -150px;
+            left: -100px;
+            filter: blur(120px);
             position: absolute;
-            bottom: -80px;
-            left: -80px;
-            border-radius: 50%;
             z-index: -1;
         }
 
-        /* Responsiveness */
-        @media (max-width: 700px) {
-            .card-3d {
-                padding: 1.8rem;
-                transform: perspective(800px) rotateX(1deg) rotateY(0deg);
-            }
-            .top-row {
+        @media (max-width: 800px) {
+            .page-1, .page-2, .page-3, .page-4 {
                 flex-direction: column;
-                align-items: flex-start;
             }
-            .stats-3d {
+            .stat-pack {
                 width: 100%;
-                justify-content: space-around;
-            }
-            .description {
-                max-width: 100%;
-            }
-            .button-group .btn {
-                font-size: 1.2rem;
-                padding: 0.8rem 1.8rem;
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
-    <div style="position: relative; width: 100%; display: flex; justify-content: center;">
-        <!-- background 3D glow -->
-        <div class="glow-ball"></div>
-        <div class="glow-ball2"></div>
+    <div style="position: relative; width: 100%;">
+        <div class="ambient-glow"></div>
+        <div class="ambient-glow2"></div>
 
-        <!-- main 3D card -->
-        <div class="card-3d">
-            <div class="content-wrapper">
+        <div class="book-3d">
+            <div class="pages-container">
 
-                <!-- row: name + floating stats (4, 10k, top 50) reworked from original -->
-                <div class="top-row">
-                    <div class="name-title">
+                <!-- PAGE 1 : exactly top of screenshot (3) — name, tagline, stats 4 / 10k / top 50 -->
+                <div class="page page-1">
+                    <div class="identity">
                         <h1>Ajaz Hussain</h1>
-                        <div class="sub">
-                            <i class="fas fa-brain"></i> building minds & machines
+                        <div class="tagline">
+                            <i class="fas fa-microchip"></i> building minds & machines
                         </div>
                     </div>
-                    <!-- these are the small stats from original: 4 BCI INNOVATIONS · 10k HOME AUTOMATION · top 50 GLOBAL SUMMIT '24 but we give them a 3D badge look -->
-                    <div class="stats-3d">
+                    <div class="stat-pack">
                         <div class="stat-item">
-                            <span class="stat-number">4</span>
-                            <span class="stat-label"><i class="fas fa-microchip"></i> BCI INNOVATIONS</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">10k</span>
-                            <span class="stat-label"><i class="fas fa-home"></i> HOME AUTOMATION</span>
+                            <div class="stat-num">4</div>
+                            <div class="stat-label"><i class="fas fa-lightbulb"></i> BCI INNOVATIONS</div>
                         </div>
                         <div class="stat-item">
-                            <span class="stat-number">top 50</span>
-                            <span class="stat-label"><i class="fas fa-globe"></i> GLOBAL SUMMIT '24</span>
+                            <div class="stat-num">10k</div>
+                            <div class="stat-label"><i class="fas fa-home"></i> HOME AUTOMATION</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-num">top 50</div>
+                            <div class="stat-label"><i class="fas fa-globe"></i> GLOBAL SUMMIT '24</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- description line (faculty, soft robotic glove, etc) with 3D depth -->
-                <div class="description">
-                    <strong>Faculty at MSME PPDC Srinagar · NIT Srinagar.</strong> Creator of the world‑top‑50 soft robotic glove, affordable BCI devices for paralysis, and India’s representative at Japan International Youth Summit 2024.
-                </div>
-
-                <!-- [Explore Work] [Connect] buttons (3D) -->
-                <div class="button-group">
-                    <a class="btn btn-primary" style="cursor: pointer;" onclick="alert('✨ Explore portfolio — 3D demo')"><i class="fas fa-cube"></i> Explore Work</a>
-                    <a class="btn" style="cursor: pointer;" onclick="alert('🤝 Connect — interactive 3D card')"><i class="fas fa-handshake"></i> Connect</a>
-                </div>
-
-                <!-- big tile area: exactly the three items from original, but redesigned as 3D blocks (BCI INNOVATIONS / HOME AUTOMATION / GLOBAL SUMMIT) -->
-                <div class="achievement-grid">
-                    <!-- first tile: 4 / BCI INNOVATIONS (matches stat but now huge) -->
-                    <div class="tile-3d">
-                        <div class="tile-big-number">4</div>
-                        <div class="tile-label">BCI INNOVATIONS</div>
-                        <div class="tile-small"><i class="fas fa-arrow-trend-up"></i> brain‑drive tech</div>
+                <!-- PAGE 2 : description (faculty/creator) + first photo (photo 1/3) -->
+                <div class="page page-2">
+                    <div class="desc-wide">
+                        <strong>Faculty at MSME PPDC Srinagar · NIT Srinagar.</strong> Creator of the world‑top‑50 soft robotic glove, affordable BCI devices for paralysis, and India’s representative at Japan International Youth Summit 2024.
                     </div>
-                    <!-- second tile: 10k / HOME AUTOMATION -->
-                    <div class="tile-3d">
-                        <div class="tile-big-number">10k</div>
-                        <div class="tile-label">HOME AUTOMATION</div>
-                        <div class="tile-small"><i class="fas fa-plug"></i> smart living</div>
-                    </div>
-                    <!-- third tile: top 50 / GLOBAL SUMMIT '24 with special styling -->
-                    <div class="tile-3d tile-special">
-                        <div class="tile-big-number">top 50</div>
-                        <div class="tile-label">GLOBAL SUMMIT '24</div>
-                        <div class="badge-global"><i class="fas fa-medal"></i> Japan representative</div>
+                    <div class="photo-tile">
+                        <div class="Aijaz.jpg">
+                            <i class="fas fa-robot"></i>
+                            <span>soft robotic glove</span>
+                            <span style="font-size:0.8rem; margin-top: 0.3rem;">⭐ world top 50</span>
+                        </div>
+                        <div class="photo-caption"><i class="fas fa-camera"></i> innovation lab · 2024</div>
                     </div>
                 </div>
 
-                <!-- extra micro detail: footer like "faculty & creator", but we also keep original reference -->
-                 <div class="connect-line">
-                    <span><i class="fas fa-robot"></i> soft robotic glove · affordable BCI · youth summit 2024</span>
-                    <span class="social-icons">
+                <!-- PAGE 3 : three core tiles (exactly "4 BCI INNOVATIONS brain-drive tech / 10k HOME AUTOMATION smart living / top 50 GLOBAL SUMMIT '24 JAPAN REPRESENTATIVE" ) plus second photo -->
+                <div class="page page-3">
+                    <div class="tiles-row">
+                        <!-- tile 1 -->
+                        <div class="mini-tile">
+                            <div class="tile-big-num">4</div>
+                            <div class="tile-head">BCI INNOVATIONS</div>
+                            <div class="tile-sub"><i class="fas fa-brain"></i> brain-drive tech</div>
+                        </div>
+                        <!-- tile 2 -->
+                        <div class="mini-tile">
+                            <div class="tile-big-num">10k</div>
+                            <div class="tile-head">HOME AUTOMATION</div>
+                            <div class="tile-sub"><i class="fas fa-home"></i> smart living</div>
+                        </div>
+                        <!-- tile 3 (special) -->
+                        <div class="mini-tile">
+                            <div class="tile-big-num">top 50</div>
+                            <div class="tile-head">GLOBAL SUMMIT '24</div>
+                            <div class="tile-sub"><i class="fas fa-medal"></i> JAPAN REPRESENTATIVE</div>
+                        </div>
+                    </div>
+                    <!-- second photo -->
+                    <div class="photo-tile-2">
+                        <div class="image.jpg" style="aspect-ratio: 1/1;">
+                            <i class="fas fa-hand-peace"></i>
+                            <span>youth summit</span>
+                            <span style="font-size:0.75rem;">Japan 2024</span>
+                        </div>
+                        <div class="photo-caption"><i class="fas fa-plane"></i> representative</div>
+                    </div>
+                </div>
+
+                <!-- PAGE 4 : [Explore Work] [Connect] buttons + third photo -->
+                <div class="page page-4">
+                    <div class="button-panel">
+                        <a class="btn-3d btn-primary-3d" onclick="alert('✨ Explore work — 3D portfolio demo')"><i class="fas fa-cube"></i> Explore Work</a>
+                        <a class="btn-3d" onclick="alert('🤝 Connect — interactive card')"><i class="fas fa-handshake"></i> Connect</a>
+                    </div>
+                    <!-- third photo -->
+                    <div class="photo-tile-3">
+                        <div class="msme.jpeg" style="aspect-ratio: 1/0.9;">
+                            <i class="fas fa-star"></i>
+                            <span>affordable BCI</span>
+                            <span style="font-size:0.7rem;">paralysis assist</span>
+                        </div>
+                        <div class="photo-caption"><i class="fas fa-bolt"></i> device prototype</div>
+                    </div>
+                </div>
+
+                <!-- footer line (extra) with social icons — matches the "4 10k top 50" theme summary -->
+                <div class="footer-note">
+                    <span><i class="fas fa-brain"></i> 4 BCI innovations · 10k home automation · top 50 global summit ‘24</span>
+                    <span class="social">
                         <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-x-twitter"></i></a>
                         <a href="#"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fas fa-envelope"></i></a>
                     </span>
                 </div>
-            </div> <!-- end content-wrapper -->
-        </div> <!-- end card-3d -->
+
+            </div> <!-- pages-container -->
+        </div> <!-- book-3d -->
     </div>
-    <script>
-        // just to make it slightly interactive: hover shadow & optional logging
-        console.log("3D BCI profile for Ajaz Hussain");
-    </script>
+    <script>console.log("multi‑page 3D profile with photos – Ajaz Hussain")</script>
 </body>
 </html>
