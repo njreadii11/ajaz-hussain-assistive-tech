@@ -3,267 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ajaz Hussain · 3D Multi-Page Profile</title>
+<title>Ajaz Hussain – 3D Multi Page</title>
 
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-
-body{
-    font-family:Inter,system-ui;
-    background:radial-gradient(circle at 20% 30%,#0a1428,#02040c);
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#edf3ff;
-}
-
-/* book */
-.book{
-    width:100%;
-    max-width:1200px;
-    background:rgba(10,20,40,.7);
-    border-radius:3rem;
-    padding:2rem;
-    box-shadow:0 40px 80px #000;
-    position:relative;
-}
-
-/* pages */
-.pages{
-    position:relative;
-    height:650px;
-    overflow:hidden;
-}
-
-.page{
-    position:absolute;
-    inset:0;
-    opacity:0;
-    transform:translateX(80px) scale(.96);
-    transition:.6s ease;
-    pointer-events:none;
-}
-
-.page.active{
-    opacity:1;
-    transform:none;
-    pointer-events:auto;
-}
-
-/* shared */
-.card{
-    background:rgba(5,15,30,.7);
-    border-radius:2.5rem;
-    padding:2rem;
-    height:100%;
-    border:1px solid #2e5580;
-}
-
-/* page 1 */
-.header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:2rem;
-    flex-wrap:wrap;
-}
-.header h1{
-    font-size:3.5rem;
-    background:linear-gradient(white,#9fc9ff);
-    -webkit-background-clip:text;
-    color:transparent;
-}
-.tagline{
-    font-size:1.4rem;
-    color:#9fc9ff;
-}
-.stats{
-    display:flex;
-    gap:2rem;
-    background:#0c1a30;
-    padding:1rem 2rem;
-    border-radius:100px;
-}
-.stat{text-align:center}
-.stat b{font-size:2.2rem}
-
-/* photos */
-.photo-box{
-    background:#102036;
-    border-radius:2rem;
-    padding:1rem;
-    border:2px solid #3299ff;
-    text-align:center;
-}
-.photo-box img{
-    width:100%;
-    height:260px;
-    object-fit:cover;
-    border-radius:1.5rem;
-}
-.caption{margin-top:.6rem;color:#c5e2ff}
-
-/* page 2 */
-.page2{
-    display:flex;
-    gap:2rem;
-    align-items:center;
-    flex-wrap:wrap;
-}
-.desc{
-    flex:2;
-    font-size:1.2rem;
-    line-height:1.6;
-}
-
-/* page 3 */
-.tiles{
-    display:flex;
-    gap:1.5rem;
-    flex-wrap:wrap;
-}
-.tile{
-    flex:1;
-    background:#0d1f38;
-    padding:2rem;
-    border-radius:2rem;
-    text-align:center;
-    border:1px solid #40a0ff;
-}
-.tile h2{
-    font-size:3rem;
-}
-
-/* page 4 */
-.actions{
-    display:flex;
-    gap:2rem;
-    flex-wrap:wrap;
-    align-items:center;
-}
-.btn{
-    padding:1rem 2.5rem;
-    border-radius:100px;
-    background:#0a2a55;
-    border:1px solid #50b0ff;
-    color:white;
-    font-size:1.3rem;
-    cursor:pointer;
-}
-
-/* nav */
-.nav{
-    margin-top:1.5rem;
-    display:flex;
-    justify-content:space-between;
-}
-.nav button{
-    padding:.7rem 2rem;
-    border-radius:50px;
-    border:1px solid #50b0ff;
-    background:#061a33;
-    color:white;
-    cursor:pointer;
-}
-</style>
 </head>
 
 <body>
 
 <div class="book">
 
-<div class="pages">
+    <div class="pages">
 
-<!-- PAGE 1 -->
-<div class="page active">
-    <div class="card header">
-        <div>
+        <!-- PAGE 1 -->
+        <div class="page active">
             <h1>Ajaz Hussain</h1>
-            <div class="tagline"><i class="fas fa-microchip"></i> building minds & machines</div>
-        </div>
-        <div class="stats">
-            <div class="stat"><b>4</b><br>BCI</div>
-            <div class="stat"><b>10k</b><br>Automation</div>
-            <div class="stat"><b>Top 50</b><br>Global</div>
-        </div>
-    </div>
-</div>
+            <p class="tagline"><i class="fas fa-microchip"></i> building minds & machines</p>
 
-<!-- PAGE 2 -->
-<div class="page">
-    <div class="card page2">
-        <div class="desc">
-            <b>Faculty at MSME PPDC Srinagar · NIT Srinagar</b><br><br>
-            Creator of world-top-50 soft robotic glove, affordable BCI devices for paralysis and India’s representative at Japan Youth Summit 2024.
-        </div>
-        <div class="photo-box">
-            <img src="Aijaz.jpg" alt="Ajaz Hussain">
-            <div class="caption">Innovation Lab · 2024</div>
-        </div>
-    </div>
-</div>
-
-<!-- PAGE 3 -->
-<div class="page">
-    <div class="card page2">
-        <div class="tiles">
-            <div class="tile">
-                <h2>4</h2>
-                BCI Innovations
-            </div>
-            <div class="tile">
-                <h2>10k</h2>
-                Home Automation
-            </div>
-            <div class="tile">
-                <h2>Top 50</h2>
-                Global Summit
+            <div class="stats">
+                <div><b>4</b><span>BCI</span></div>
+                <div><b>10k</b><span>Automation</span></div>
+                <div><b>Top 50</b><span>Global</span></div>
             </div>
         </div>
-        <div class="photo-box">
-            <img src="image.jpg" alt="Japan Summit">
-            <div class="caption">Japan · 2024</div>
+
+        <!-- PAGE 2 -->
+        <div class="page">
+            <div class="content">
+                <p>
+                    <b>Faculty at MSME PPDC Srinagar · NIT Srinagar</b><br><br>
+                    Creator of world-top-50 soft robotic glove and affordable BCI devices.
+                </p>
+
+                <img src="./Ajaz.jpg" alt="Ajaz Hussain">
+            </div>
         </div>
+
+        <!-- PAGE 3 -->
+        <div class="page">
+            <div class="content">
+                <div class="tiles">
+                    <div class="tile">4<br><small>BCI Innovations</small></div>
+                    <div class="tile">10k<br><small>Home Automation</small></div>
+                    <div class="tile">Top 50<br><small>Global Summit</small></div>
+                </div>
+
+                <img src="./image.jpg" alt="Japan Summit">
+            </div>
+        </div>
+
+        <!-- PAGE 4 -->
+        <div class="page">
+            <div class="content">
+                <div class="buttons">
+                    <button>🚀 Explore Work</button>
+                    <button>🤝 Connect</button>
+                </div>
+
+                <img src="./msme.jpg" alt="BCI Device">
+            </div>
+        </div>
+
     </div>
-</div>
 
-<!-- PAGE 4 -->
-<div class="page">
-    <div class="card actions">
-        <div>
-            <button class="btn">🚀 Explore Work</button>
-            <button class="btn">🤝 Connect</button>
-        </div>
-        <div class="photo-box">
-            <img src="msme.jpeg" alt="BCI Device">
-            <div class="caption">BCI Prototype</div>
-        </div>
+    <!-- NAVIGATION -->
+    <div class="nav">
+        <button onclick="prevPage()">⬅ Prev</button>
+        <button onclick="nextPage()">Next ➡</button>
     </div>
-</div>
 
 </div>
 
-<!-- NAV -->
-<div class="nav">
-    <button onclick="prev()">⬅ Prev</button>
-    <button onclick="next()">Next ➡</button>
-</div>
-
-</div>
-
-<script>
-let i=0;
-const pages=document.querySelectorAll('.page');
-function show(n){
-    pages.forEach(p=>p.classList.remove('active'));
-    pages[n].classList.add('active');
-}
-function next(){ if(i<pages.length-1){i++;show(i)} }
-function prev(){ if(i>0){i--;show(i)} }
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
