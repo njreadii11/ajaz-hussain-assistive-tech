@@ -1,11 +1,26 @@
-const posts = document.querySelectorAll('.post');
+let currentPage = 0;
+const pages = document.querySelectorAll('.page');
 
-const observer = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-        if(entry.isIntersecting){
-            entry.target.classList.add('show');
-        }
-    });
-},{threshold:0.2});
+function showPage(index){
+    pages.forEach(p => p.classList.remove('active'));
+    pages[index].classList.add('active');
+}
 
-posts.forEach(post=>observer.observe(post));
+function nextPage(){
+    if(currentPage < pages.length - 1){
+        currentPage++;
+        showPage(currentPage);
+    }
+}
+
+function prevPage(){
+    if(currentPage > 0){
+        currentPage--;
+        showPage(currentPage);
+    }
+}
+
+document.addEventListener('keydown', e => {
+    if(e.key === 'ArrowRight') nextPage();
+    if(e.key === 'ArrowLeft') prevPage();
+});
