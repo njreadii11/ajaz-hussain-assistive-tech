@@ -3,642 +3,426 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajaz Hussain - BCI Innovator | Official Portfolio</title>
+    <title>Ajaz Hussain · 3D BCI profile</title>
+    <!-- Font Awesome for clean icons (optional but adds style) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
-            background: #0a0f1e;
-            color: #fff;
-            line-height: 1.6;
+            min-height: 100vh;
+            background: radial-gradient(circle at 30% 30%, #0b1120, #030614);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
         }
 
-        .navbar {
-            background: rgba(10, 15, 30, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 5%;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+        /* main 3D card – subtle perspective + preserve-3d for children */
+        .card-3d {
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(18, 25, 45, 0.65);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(90, 150, 255, 0.25);
+            border-radius: 3rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 40px 70px rgba(0, 0, 0, 0.6), 
+                        0 0 0 1px rgba(0, 255, 255, 0.1) inset,
+                        0 0 30px rgba(0, 180, 255, 0.3);
+            transform: perspective(1200px) rotateX(2deg) rotateY(-1deg) rotateZ(0.5deg);
+            transition: transform 0.4s ease;
+            color: #eef5ff;
+        }
+
+        .card-3d:hover {
+            transform: perspective(1200px) rotateX(1deg) rotateY(-2deg) rotateZ(0.8deg) scale(1.01);
+            box-shadow: 0 50px 90px rgba(0, 20, 40, 0.9), 0 0 0 2px rgba(0, 240, 255, 0.3) inset;
+        }
+
+        /* inner content uses translateZ to lift layers */
+        .content-wrapper {
+            transform: translateZ(30px);
             display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        /* header row with name/title + floating metrics */
+        .top-row {
+            display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #64ffda;
+            gap: 1.5rem;
         }
 
-        .logo {
+        .name-title h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(to right, #ffffff, #b0d0ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 10px 20px rgba(0, 50, 150, 0.5);
+            transform: translateZ(40px);
+        }
+
+        .name-title .sub {
             font-size: 1.5rem;
-            font-weight: bold;
-            color: #64ffda;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            background: #64ffda;
-            color: #0a0f1e;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 5%;
-        }
-
-        .page-section {
-            min-height: 100vh;
-            padding: 3rem 0;
-            border-bottom: 2px dashed #64ffda;
-        }
-
-        .hero-section {
+            font-weight: 400;
+            color: #aac8ff;
             display: flex;
             align-items: center;
-            gap: 4rem;
-            min-height: 90vh;
-            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.2rem;
+            transform: translateZ(25px);
         }
 
-        .hero-content {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #fff, #64ffda);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-content h2 {
+        .name-title .sub i {
+            color: #5f9eff;
             font-size: 1.8rem;
-            color: #64ffda;
-            margin-bottom: 1.5rem;
         }
 
-        .hero-content p {
-            font-size: 1.2rem;
-            color: #8892b0;
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-
-        .hero-buttons {
+        .stats-3d {
             display: flex;
-            gap: 1rem;
-            margin-bottom: 3rem;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .btn-primary {
-            background: #64ffda;
-            color: #0a0f1e;
-        }
-
-        .btn-primary:hover {
-            background: #fff;
-            transform: translateY(-3px);
-        }
-
-        .btn-outline {
-            border: 2px solid #64ffda;
-            color: #64ffda;
-        }
-
-        .btn-outline:hover {
-            background: #64ffda;
-            color: #0a0f1e;
-            transform: translateY(-3px);
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 3rem;
-            flex-wrap: wrap;
+            gap: 2.2rem;
+            background: rgba(8, 15, 30, 0.7);
+            padding: 1.2rem 2.2rem;
+            border-radius: 60px;
+            border: 1px solid rgba(70, 160, 255, 0.4);
+            box-shadow: 0 15px 30px -8px #00000080, 0 0 15px #2f6fbb40;
+            transform: translateZ(45px) rotateY(2deg);
+            backdrop-filter: blur(8px);
         }
 
         .stat-item {
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #64ffda;
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            background: linear-gradient(180deg, #fff, #b0d5ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
         }
 
         .stat-label {
-            color: #8892b0;
-            font-size: 1rem;
-        }
-
-        .stat-badge {
-            background: rgba(100, 255, 218, 0.1);
-            border: 2px solid #64ffda;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-weight: bold;
-            color: #64ffda;
-        }
-
-        .hero-image {
-            flex: 1;
-            min-width: 300px;
-            text-align: center;
-        }
-
-        .profile-photo {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 30px;
-            border: 4px solid #64ffda;
-            box-shadow: 0 20px 40px rgba(100, 255, 218, 0.3);
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            color: #64ffda;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: #8892b0;
-            font-size: 1.2rem;
-            margin-bottom: 3rem;
-        }
-
-        .innovations-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .innovation-card {
-            background: #1a1f2f;
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid #2a3a5a;
-            transition: all 0.3s;
-        }
-
-        .innovation-card:hover {
-            transform: translateY(-10px);
-            border-color: #64ffda;
-            box-shadow: 0 20px 40px rgba(100, 255, 218, 0.2);
-        }
-
-        .innovation-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .innovation-card h3 {
-            color: #64ffda;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .innovation-card p {
-            color: #a8b2d1;
-        }
-
-        .innovation-badge {
-            display: inline-block;
-            background: rgba(100, 255, 218, 0.1);
-            color: #64ffda;
-            padding: 0.3rem 1rem;
-            border-radius: 50px;
             font-size: 0.9rem;
-            margin-top: 1rem;
-            border: 1px solid #64ffda;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #9bb9ff;
         }
 
-        .awards-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin: 3rem 0;
+        .stat-label i {
+            margin-right: 4px;
+            font-size: 0.8rem;
+            color: #3ecf8e;
         }
 
-        .award-card {
-            background: #1a1f2f;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid #2a3a5a;
-        }
-
-        .award-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-bottom: 3px solid #64ffda;
-        }
-
-        .award-content {
-            padding: 2rem;
-        }
-
-        .award-content h3 {
-            color: #64ffda;
+        /* description line – 3D lift */
+        .description {
             font-size: 1.3rem;
-            margin-bottom: 1rem;
+            max-width: 80%;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            border-left: 4px solid #2aa9ff;
+            transform: translateZ(35px);
+            box-shadow: -5px 10px 20px #00000050;
+            backdrop-filter: blur(5px);
+            line-height: 1.5;
         }
 
-        .award-date {
-            color: #64ffda;
-            font-size: 0.9rem;
-            margin-top: 1rem;
-            display: block;
+        .description strong {
+            color: white;
+            font-weight: 600;
         }
 
-        .honorary-section {
-            background: linear-gradient(135deg, #1a1f2f, #0a0f1e);
-            padding: 3rem;
-            border-radius: 30px;
-            margin: 3rem 0;
-            border: 2px solid #64ffda;
-        }
-
-        .honorary-title {
-            color: #64ffda;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .university-details {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            color: #fff;
-        }
-
-        .university-name {
-            color: #64ffda;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .contact-section {
-            background: #1a1f2f;
-            padding: 4rem;
-            border-radius: 30px;
-            margin: 3rem 0;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .contact-card {
-            text-align: center;
-            padding: 2rem;
-            background: #0a0f1e;
-            border-radius: 15px;
-            transition: all 0.3s;
-        }
-
-        .contact-card:hover {
-            transform: translateY(-5px);
-            border: 1px solid #64ffda;
-        }
-
-        .contact-icon {
-            font-size: 2.5rem;
-            color: #64ffda;
-            margin-bottom: 1rem;
-        }
-
-        .page-indicator {
+        /* button group */
+        .button-group {
             display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
-            position: sticky;
-            bottom: 2rem;
-            z-index: 100;
+            gap: 1.8rem;
+            transform: translateZ(50px);
+            flex-wrap: wrap;
         }
 
-        .page-dot {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: #1a1f2f;
-            border: 2px solid #64ffda;
-            color: #64ffda;
-            display: flex;
+        .btn {
+            padding: 1rem 2.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.4rem;
+            letter-spacing: 0.03em;
+            background: rgba(20, 35, 65, 0.7);
+            backdrop-filter: blur(10px);
+            color: white;
+            border: 1px solid rgba(0, 200, 255, 0.5);
+            box-shadow: 0 15px 25px -8px #000000cc, 0 0 20px #00a6ff4d;
+            transition: 0.2s;
+            cursor: default; /* not actual link, just style */
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
+            gap: 0.8rem;
+            transform: translateZ(20px);
+            text-decoration: none;
+            border-image: none;
         }
 
-        .page-dot.active {
-            background: #64ffda;
-            color: #0a0f1e;
-            transform: scale(1.2);
+        .btn-primary {
+            background: linear-gradient(145deg, #0055c7, #002a85);
+            border: 1px solid #7ac4ff;
+            box-shadow: 0 20px 30px -8px #001c3d, 0 0 30px #0080ff;
         }
 
-        .page-dot:hover {
-            background: #64ffda;
-            color: #0a0f1e;
+        .btn i {
+            font-size: 1.6rem;
         }
 
-        footer {
-            background: #0a0f1e;
-            padding: 2rem;
+        /* 3d tile grid – the "4 innovations, 10k home, top 50" part */
+        .achievement-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.2rem;
+            transform-style: preserve-3d;
+            transform: translateZ(20px);
+        }
+
+        .tile-3d {
+            flex: 1 1 180px;
+            background: rgba(8, 18, 38, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(60, 160, 255, 0.4);
+            border-radius: 2rem;
+            padding: 1.8rem 1rem;
             text-align: center;
-            border-top: 1px solid #2a3a5a;
-            color: #8892b0;
+            box-shadow: 0 20px 30px -12px black, 0 0 0 1px rgba(0, 255, 255, 0.2) inset;
+            transform: rotateY(2deg) rotateX(1deg) translateZ(25px);
+            transition: 0.25s;
         }
 
-        @media (max-width: 768px) {
-            .navbar {
+        .tile-3d:hover {
+            transform: rotateY(0deg) rotateX(0deg) translateZ(45px);
+            border-color: #00dcff;
+            box-shadow: 0 30px 40px -10px #001842, 0 0 30px #00a6ff;
+        }
+
+        .tile-big-number {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1;
+            background: linear-gradient(135deg, #fff, #82cbff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 8px 6px #00000060);
+        }
+
+        .tile-label {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #b5d5ff;
+            margin-top: 0.2rem;
+        }
+
+        .tile-small {
+            font-size: 0.9rem;
+            color: #8ec8ff;
+            margin-top: 0.5rem;
+            border-top: 1px dashed #3e6c9e;
+            padding-top: 0.5rem;
+        }
+
+        /* global summit special tile */
+        .tile-special .tile-big-number {
+            font-size: 3rem;
+        }
+        .badge-global {
+            background: #00a6ff30;
+            border-radius: 100px;
+            padding: 0.2rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 0.7rem;
+            border: 1px solid cyan;
+            text-transform: uppercase;
+        }
+
+        /* bottom connect line */
+        .connect-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transform: translateZ(30px);
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            border-top: 1px solid #2f66a0;
+            padding-top: 1.5rem;
+            color: #b2d0ff;
+        }
+
+        .connect-line i {
+            color: #3ecf8e;
+            margin: 0 0.2rem;
+        }
+        .social-icons a {
+            color: #c6deff;
+            margin-left: 1.5rem;
+            font-size: 1.6rem;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+        .social-icons a:hover {
+            color: white;
+            text-shadow: 0 0 15px cyan;
+        }
+
+        /* 3D decorative elements (floating glow) */
+        .glow-ball {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle at 30% 30%, #48b5ff20, transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            z-index: -1;
+            top: -50px;
+            right: -50px;
+        }
+
+        .glow-ball2 {
+            width: 350px;
+            height: 350px;
+            background: #002aff20;
+            filter: blur(90px);
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 700px) {
+            .card-3d {
+                padding: 1.8rem;
+                transform: perspective(800px) rotateX(1deg) rotateY(0deg);
+            }
+            .top-row {
                 flex-direction: column;
-                gap: 1rem;
+                align-items: flex-start;
             }
-            
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
+            .stats-3d {
+                width: 100%;
+                justify-content: space-around;
             }
-            
-            .hero-content h1 {
-                font-size: 2.5rem;
+            .description {
+                max-width: 100%;
             }
-            
-            .awards-grid, .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .university-details {
-                grid-template-columns: 1fr;
+            .button-group .btn {
+                font-size: 1.2rem;
+                padding: 0.8rem 1.8rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="logo">AJAZ HUSSAIN</div>
-        <div class="nav-links">
-            <a href="#page1" class="active" onclick="showPage(1)">Page 1</a>
-            <a href="#page2" onclick="showPage(2)">Page 2</a>
-            <a href="#page3" onclick="showPage(3)">Page 3</a>
-            <a href="#page4" onclick="showPage(4)">Page 4</a>
-        </div>
-    </nav>
+    <div style="position: relative; width: 100%; display: flex; justify-content: center;">
+        <!-- background 3D glow -->
+        <div class="glow-ball"></div>
+        <div class="glow-ball2"></div>
 
-    <!-- PAGE 1 - HERO SECTION -->
-    <section id="page1" class="page-section">
-        <div class="container">
-            <div class="hero-section">
-                <div class="hero-content">
-                    <h1>Brain-Computer Interface</h1>
-                    <h2>Ajaz Hussain<br>building minds & machines</h2>
-                    <p>Faculty at MSME PPDC Srinagar · NIT Srinagar. Creator of the world-top-50 soft robotic glove, affordable BCI devices for paralysis, and India's representative at Japan International Youth Summit 2024.</p>
-                    
-                    <div class="hero-buttons">
-                        <a href="#" class="btn btn-primary">Explore Work</a>
-                        <a href="#" class="btn btn-outline">Connect</a>
+        <!-- main 3D card -->
+        <div class="card-3d">
+            <div class="content-wrapper">
+
+                <!-- row: name + floating stats (4, 10k, top 50) reworked from original -->
+                <div class="top-row">
+                    <div class="name-title">
+                        <h1>Ajaz Hussain</h1>
+                        <div class="sub">
+                            <i class="fas fa-brain"></i> building minds & machines
+                        </div>
                     </div>
-
-                    <div class="hero-stats">
+                    <!-- these are the small stats from original: 4 BCI INNOVATIONS · 10k HOME AUTOMATION · top 50 GLOBAL SUMMIT '24 but we give them a 3D badge look -->
+                    <div class="stats-3d">
                         <div class="stat-item">
-                            <div class="stat-number">4</div>
-                            <div class="stat-label">BCI INNOVATIONS</div>
+                            <span class="stat-number">4</span>
+                            <span class="stat-label"><i class="fas fa-microchip"></i> BCI INNOVATIONS</span>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number">₹10k</div>
-                            <div class="stat-label">HOME AUTOMATION</div>
+                            <span class="stat-number">10k</span>
+                            <span class="stat-label"><i class="fas fa-home"></i> HOME AUTOMATION</span>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-badge">top 50<br>GLOBAL SUMMIT '24</div>
+                            <span class="stat-number">top 50</span>
+                            <span class="stat-label"><i class="fas fa-globe"></i> GLOBAL SUMMIT '24</span>
                         </div>
                     </div>
                 </div>
-                
-                <div class="hero-image">
-                    <!-- PHOTO 1: Aijaz.jpg -->
-                    <img src="Aijaz.jpg" alt="Ajaz Hussain" class="profile-photo" 
-                         onerror="this.src='https://via.placeholder.com/400x500/1a1f2f/64ffda?text=Ajaz+Hussain'">
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- PAGE 2 - INNOVATIONS -->
-    <section id="page2" class="page-section">
-        <div class="container">
-            <h2 class="section-title">Breakthrough Innovations</h2>
-            <p class="section-subtitle">low-cost, high-impact assistive technologies · powered by brain signals</p>
+                <!-- description line (faculty, soft robotic glove, etc) with 3D depth -->
+                <div class="description">
+                    <strong>Faculty at MSME PPDC Srinagar · NIT Srinagar.</strong> Creator of the world‑top‑50 soft robotic glove, affordable BCI devices for paralysis, and India’s representative at Japan International Youth Summit 2024.
+                </div>
 
-            <div class="innovations-grid">
-                <div class="innovation-card">
-                    <div class="innovation-icon">🖐️</div>
-                    <h3>Soft Robotic Glove</h3>
-                    <p>World top-50 innovation for neuro-rehabilitation. BCI-controlled glove helping paralyzed patients regain hand movement.</p>
-                    <span class="innovation-badge">🏆 Top 50 Global '24</span>
+                <!-- [Explore Work] [Connect] buttons (3D) -->
+                <div class="button-group">
+                    <a class="btn btn-primary" style="cursor: pointer;" onclick="alert('✨ Explore portfolio — 3D demo')"><i class="fas fa-cube"></i> Explore Work</a>
+                    <a class="btn" style="cursor: pointer;" onclick="alert('🤝 Connect — interactive 3D card')"><i class="fas fa-handshake"></i> Connect</a>
                 </div>
-                <div class="innovation-card">
-                    <div class="innovation-icon">🏠</div>
-                    <h3>BCI Home Automation</h3>
-                    <p>Under ₹10,000 system to control lights, fans, and appliances using brain signals. Making smart homes accessible.</p>
-                    <span class="innovation-badge">💰 Under ₹10k</span>
-                </div>
-                <div class="innovation-card">
-                    <div class="innovation-icon">🦽</div>
-                    <h3>EEG Smart Wheelchair</h3>
-                    <p>Thought-controlled wheelchair with destination mapping. Affordable mobility solution for paralyzed patients.</p>
-                    <span class="innovation-badge">⚡ Attention Control</span>
-                </div>
-                <div class="innovation-card">
-                    <div class="innovation-icon">🧠</div>
-                    <h3>Neuro-Rehab System</h3>
-                    <p>Complete BCI platform for rehabilitation exercises and neural training.</p>
-                    <span class="innovation-badge">🔬 Research Stage</span>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- PAGE 3 - AWARDS -->
-    <section id="page3" class="page-section">
-        <div class="container">
-            <h2 class="section-title">Awards & Recognition</h2>
-            <p class="section-subtitle">Honored for contributions to BCI and assistive technology</p>
-
-            <!-- Honorary Doctorate -->
-            <div class="honorary-section">
-                <h3 class="honorary-title">🎓 Honorary Doctorate Award Ceremony</h3>
-                <div class="university-details">
-                    <div>
-                        <p class="university-name">KARVAN UNIVERSITY OF ENGINEERING AND TECHNOLOGY</p>
-                        <p>DEPARTMENT OF ELECTRICAL ENGINEERING</p>
-                        <p style="margin-top: 1rem;">30th Anniversary</p>
-                        <p>Honorary Doctorate Award Ceremony</p>
-                        <p style="color: #64ffda;">(Under The KARVANSHALA)</p>
+                <!-- big tile area: exactly the three items from original, but redesigned as 3D blocks (BCI INNOVATIONS / HOME AUTOMATION / GLOBAL SUMMIT) -->
+                <div class="achievement-grid">
+                    <!-- first tile: 4 / BCI INNOVATIONS (matches stat but now huge) -->
+                    <div class="tile-3d">
+                        <div class="tile-big-number">4</div>
+                        <div class="tile-label">BCI INNOVATIONS</div>
+                        <div class="tile-small"><i class="fas fa-arrow-trend-up"></i> brain‑drive tech</div>
                     </div>
-                    <div>
-                        <p>Institute of Electrical Engineering</p>
-                        <p>Faculty of Engineering</p>
-                        <p>Department of Electrical Engineering</p>
-                        <p>University of Technology, Cairo</p>
-                        <p style="margin-top: 1rem; color: #8892b0;">HIGHER EDUCATION AUTHORITY OF THE GOVERNORATE OF KARVAN</p>
-                        <p style="color: #8892b0;">NATIONAL CENTRE FOR MATHEMATICS</p>
-                        <p style="color: #8892b0;">INSTITUTE</p>
+                    <!-- second tile: 10k / HOME AUTOMATION -->
+                    <div class="tile-3d">
+                        <div class="tile-big-number">10k</div>
+                        <div class="tile-label">HOME AUTOMATION</div>
+                        <div class="tile-small"><i class="fas fa-plug"></i> smart living</div>
+                    </div>
+                    <!-- third tile: top 50 / GLOBAL SUMMIT '24 with special styling -->
+                    <div class="tile-3d tile-special">
+                        <div class="tile-big-number">top 50</div>
+                        <div class="tile-label">GLOBAL SUMMIT '24</div>
+                        <div class="badge-global"><i class="fas fa-medal"></i> Japan representative</div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Awards Grid -->
-            <div class="awards-grid">
-                <div class="award-card">
-                    <!-- PHOTO 2: image.jpg -->
-                    <img src="image.jpg" alt="Japan Summit" class="award-image" 
-                         onerror="this.src='https://via.placeholder.com/600x400/1a1f2f/64ffda?text=Japan+Summit+2024'">
-                    <div class="award-content">
-                        <h3>🏆 Top 50 Global Innovation 2024</h3>
-                        <p>Japan International Youth Summit - Represented India</p>
-                        <span class="award-date">📍 Tokyo, Japan | 2024</span>
-                    </div>
+                <!-- extra micro detail: footer like "faculty & creator", but we also keep original reference -->
+                 <div class="connect-line">
+                    <span><i class="fas fa-robot"></i> soft robotic glove · affordable BCI · youth summit 2024</span>
+                    <span class="social-icons">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </span>
                 </div>
-                <div class="award-card">
-                    <!-- Honorary Doctorate Photo (placeholder) -->
-                    <img src="https://via.placeholder.com/600x400/1a1f2f/64ffda?text=Honorary+Doctorate" alt="Honorary Doctorate" class="award-image">
-                    <div class="award-content">
-                        <h3>🎓 Honorary Doctorate</h3>
-                        <p>Karvan University, Cairo - For BCI contributions</p>
-                        <span class="award-date">📍 Cairo, Egypt | 2026</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Honoured Photo -->
-            <div style="margin-top: 3rem;">
-                <!-- PHOTO 3: msme (try with .jpg first) -->
-                <img src="msme.jpg" alt="Ajaz being honoured" 
-                     style="width: 100%; border-radius: 20px; border: 3px solid #64ffda;"
-                     onerror="this.onerror=null; this.src='images/msme'">
-                <p style="text-align: center; color: #64ffda; margin-top: 1rem;">Ajaz Hussain being honoured</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- PAGE 4 - CONTACT -->
-    <section id="page4" class="page-section">
-        <div class="container">
-            <h2 class="section-title">Connect</h2>
-            <div class="contact-section">
-                <div class="contact-grid">
-                    <div class="contact-card">
-                        <div class="contact-icon">📧</div>
-                        <h3>Email</h3>
-                        <p style="color: #64ffda;">ajaz.hussain@ppdc.org</p>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">🔗</div>
-                        <h3>LinkedIn</h3>
-                        <p style="color: #64ffda;">/in/ajaz-hussain-bci</p>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-icon">🐦</div>
-                        <h3>Twitter</h3>
-                        <p style="color: #64ffda;">@ajaz_innovates</p>
-                    </div>
-                </div>
-                <p style="text-align: center; margin-top: 2rem; color: #8892b0;">📍 MSME PPDDC, Srinagar | NIT Srinagar</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Page Navigation -->
-    <div class="page-indicator">
-        <div class="page-dot active" onclick="showPage(1)">1</div>
-        <div class="page-dot" onclick="showPage(2)">2</div>
-        <div class="page-dot" onclick="showPage(3)">3</div>
-        <div class="page-dot" onclick="showPage(4)">4</div>
+            </div> <!-- end content-wrapper -->
+        </div> <!-- end card-3d -->
     </div>
-
-    <footer>
-        <p>© 2026 Ajaz Hussain - building minds & machines</p>
-    </footer>
-
     <script>
-        // Page navigation function
-        function showPage(pageNumber) {
-            document.querySelectorAll('.page-section').forEach(section => {
-                section.style.display = 'none';
-            });
-            
-            document.getElementById(`page${pageNumber}`).style.display = 'block';
-            
-            document.querySelectorAll('.nav-links a').forEach((link, index) => {
-                if (index === pageNumber - 1) {
-                    link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-            
-            document.querySelectorAll('.page-dot').forEach((dot, index) => {
-                if (index === pageNumber - 1) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Show page 1 by default
-        showPage(1);
-
-        // Keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            const activePage = document.querySelector('.page-dot.active');
-            if (!activePage) return;
-            
-            let currentPage = parseInt(activePage.textContent);
-            
-            if (e.key === 'ArrowRight' && currentPage < 4) {
-                showPage(currentPage + 1);
-            } else if (e.key === 'ArrowLeft' && currentPage > 1) {
-                showPage(currentPage - 1);
-            }
-        });
+        // just to make it slightly interactive: hover shadow & optional logging
+        console.log("3D BCI profile for Ajaz Hussain");
     </script>
-    </body>
+</body>
 </html>
