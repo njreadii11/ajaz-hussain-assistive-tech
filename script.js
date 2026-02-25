@@ -1,26 +1,14 @@
-let currentPage = 0;
-const pages = document.querySelectorAll('.page');
+const sections = document.querySelectorAll('.section');
 
-function showPage(index){
-    pages.forEach(p => p.classList.remove('active'));
-    pages[index].classList.add('active');
-}
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        }
+    });
+},{threshold:0.2});
 
-function nextPage(){
-    if(currentPage < pages.length - 1){
-        currentPage++;
-        showPage(currentPage);
-    }
-}
-
-function prevPage(){
-    if(currentPage > 0){
-        currentPage--;
-        showPage(currentPage);
-    }
-}
-
-document.addEventListener('keydown', e => {
-    if(e.key === 'ArrowRight') nextPage();
-    if(e.key === 'ArrowLeft') prevPage();
+sections.forEach(sec=>{
+    sec.classList.add('hidden');
+    observer.observe(sec);
 });
