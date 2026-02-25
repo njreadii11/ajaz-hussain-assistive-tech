@@ -5,159 +5,162 @@
 <title>Aijaz Hussain | Portfolio</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 body{
     font-family:Inter,sans-serif;
-    background:linear-gradient(180deg,#f3f2ef,#eef3f8);
+    background:#f3f2ef;
     color:#000;
 }
 
-/* container */
-.container{
-    max-width:900px;
-    margin:auto;
-    padding:30px 15px;
+/* page container */
+.wrapper{
+    max-width:720px;
+    margin:40px auto;
+    padding:0 15px;
 }
 
 /* card */
 .card{
     background:#fff;
-    border-radius:14px;
-    padding:20px;
-    margin-bottom:30px;
-    border:1px solid #ddd;
-    animation:fadeUp .8s ease;
+    border-radius:10px;
+    border:1px solid #e0e0e0;
+    padding:16px;
+    margin-bottom:20px;
 }
 
 /* header */
 .profile{
     display:flex;
-    gap:20px;
     align-items:center;
+    gap:12px;
 }
+
 .profile img{
-    width:110px;
-    height:110px;
+    width:56px;
+    height:56px;
     border-radius:50%;
     object-fit:cover;
 }
-.profile h1{
-    font-size:28px;
+
+.name{
     font-weight:800;
-}
-.profile p{
-    color:#555;
+    font-size:18px;
 }
 
-/* stats */
+.subtitle{
+    font-size:13px;
+    color:#666;
+}
+
+/* stats row */
 .stats{
     display:flex;
     justify-content:space-between;
-    margin-top:20px;
-}
-.stat{
+    margin-top:14px;
     text-align:center;
 }
-.stat h2{
-    font-size:22px;
+
+.stat strong{
     color:#0a66c2;
-}
-.stat span{
-    font-size:13px;
-    color:#555;
+    font-size:16px;
 }
 
 /* post */
+.post-title{
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.post-text{
+    font-size:14px;
+    color:#333;
+    line-height:1.5;
+}
+
 .post img{
     width:100%;
-    border-radius:12px;
-    margin-top:15px;
-}
-.post h3{
-    margin-bottom:10px;
+    border-radius:8px;
+    margin-top:12px;
 }
 
 /* buttons */
-.buttons{
+.actions{
     display:flex;
-    gap:15px;
-    margin-top:15px;
+    gap:20px;
+    margin-top:12px;
+    font-size:14px;
+    color:#666;
 }
-.btn{
-    padding:10px 18px;
-    border-radius:20px;
-    border:1px solid #0a66c2;
-    background:#0a66c2;
-    color:#fff;
+.actions span{
     cursor:pointer;
 }
 
-/* animation */
+/* smooth fade */
+.card{
+    animation:fadeUp .6s ease;
+}
+
 @keyframes fadeUp{
-    from{opacity:0;transform:translateY(30px)}
+    from{opacity:0;transform:translateY(20px)}
     to{opacity:1;transform:none}
 }
 </style>
 </head>
 
 <body>
-<div class="container">
 
-<!-- PAGE 1 -->
+<div class="wrapper">
+
+<!-- PROFILE CARD -->
 <div class="card">
     <div class="profile">
-        <img src="./aijaz.jpg">
+        <img src="aijaz.jpg">
         <div>
-            <h1>Aijaz Hussain</h1>
-            <p>BCI Innovator · Faculty MSME PPDC Srinagar</p>
+            <div class="name">Aijaz Hussain</div>
+            <div class="subtitle">BCI Innovator · Faculty MSME PPDC Srinagar</div>
         </div>
     </div>
 
     <div class="stats">
-        <div class="stat">
-            <h2>4</h2>
-            <span>BCI Innovations</span>
-        </div>
-        <div class="stat">
-            <h2>10k+</h2>
-            <span>Home Automation</span>
-        </div>
-        <div class="stat">
-            <h2>Top 50</h2>
-            <span>Global Summit 2024</span>
-        </div>
+        <div class="stat"><strong>4</strong><br>BCI Innovations</div>
+        <div class="stat"><strong>10k+</strong><br>Home Automation</div>
+        <div class="stat"><strong>Top 50</strong><br>Global Summit 2024</div>
     </div>
 </div>
 
-<!-- PAGE 2 -->
-<div class="card post">
-    <h3>Honored to lead MSME PPDC Team</h3>
-    <p>
+<!-- LINKEDIN STYLE POST -->
+<div class="card">
+    <div class="profile">
+        <img src="aijaz.jpg">
+        <div>
+            <div class="name">Aijaz Hussain</div>
+            <div class="subtitle">1y · MSME PPDC Srinagar</div>
+        </div>
+    </div>
+
+    <p class="post-text" style="margin-top:10px">
         Honored to lead the team of Ministry of MSME PPDC EC Srinagar
-        in taking the national pledge and innovation initiatives.
+        in taking the national pledge and driving innovation initiatives.
     </p>
+
     <img src="image.jpg">
-</div>
 
-<!-- PAGE 3 -->
-<div class="card post">
-    <h3>Affordable BCI for Paralysis Assistance</h3>
-    <p>
-        Developing affordable Brain-Computer Interface solutions
-        to assist paralysis patients and smart rehabilitation.
-    </p>
-    <img src="msme.jpg">
-
-    <div class="buttons">
-        <button class="btn">Explore Work</button>
-        <button class="btn">Connect</button>
+    <div class="actions">
+        <span>👍 Like</span>
+        <span>💬 Comment</span>
+        <span>↗ Share</span>
     </div>
 </div>
 
 </div>
+
 </body>
 </html>
