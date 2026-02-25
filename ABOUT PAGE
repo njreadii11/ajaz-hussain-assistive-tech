@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About | Aijaz Hussain</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<section class="page-box">
+  <h1 class="page-title">About Me</h1>
+
+  <p>
+    I am focused on developing affordable and scalable assistive technologies.
+    My work includes EEG-based Brain-Computer Interfaces, soft robotics,
+    and smart living solutions for paralysis rehabilitation.
+  </p>
+
+  <ul class="list">
+    <li>🧠 Brain-Computer Interfaces</li>
+    <li>🤖 Soft Robotics</li>
+    <li>♿ Assistive Devices</li>
+    <li>🏠 Smart Home Automation</li>
+  </ul>
+
+  <a href="index.html" class="btn">← Back Home</a>
+</section>
+</body>
+</html>
