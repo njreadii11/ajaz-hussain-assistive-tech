@@ -1,476 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajaz Hussain · 3D multi‑page photo story</title>
-    <!-- Font Awesome 6 (free) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts Inter (clean) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ajaz Hussain · 3D Multi-Page Profile</title>
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: radial-gradient(circle at 20% 30%, #0a1428, #02040c);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-            color: #edf3ff;
-        }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        /* main 3D card container – acts like a turning page */
-        .book-3d {
-            max-width: 1300px;
-            width: 100%;
-            background: rgba(12, 22, 40, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(0, 200, 255, 0.2);
-            border-radius: 3rem;
-            padding: 2.2rem 2rem;
-            box-shadow: 0 40px 80px -10px #000000d0, 0 0 0 1px rgba(0, 255, 255, 0.15) inset, 0 0 60px #003f7f40;
-            transform: perspective(2000px) rotateX(2deg) rotateY(-2deg);
-            transition: transform 0.3s ease;
-        }
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
 
-        .book-3d:hover {
-            transform: perspective(2000px) rotateX(1deg) rotateY(-3deg) scale(1.005);
-            border-color: #1eb0ff60;
-        }
+body{
+    font-family:Inter,system-ui;
+    background:radial-gradient(circle at 20% 30%,#0a1428,#02040c);
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#edf3ff;
+}
 
-        /* pages wrapper (slides) */
-        .pages-container {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-        }
+/* book */
+.book{
+    width:100%;
+    max-width:1200px;
+    background:rgba(10,20,40,.7);
+    border-radius:3rem;
+    padding:2rem;
+    box-shadow:0 40px 80px #000;
+    position:relative;
+}
 
-        /* each page row – we create three distinct "pages" stacked with 3D photo tiles */
-        .page {
-            transform-style: preserve-3d;
-            transform: translateZ(25px);
-            background: rgba(5, 15, 30, 0.5);
-            border-radius: 2.5rem;
-            padding: 2rem 2rem 1.8rem;
-            border: 1px solid #2e5580;
-            box-shadow: 0 30px 40px -15px black, 0 0 0 1px #2aa9ff30 inset;
-            backdrop-filter: blur(8px);
-        }
+/* pages */
+.pages{
+    position:relative;
+    height:650px;
+    overflow:hidden;
+}
 
-        /* page 1 — header & intro stats (exactly as screenshot) */
-        .page-1 {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 2rem;
-        }
-        .identity h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            background: linear-gradient(145deg, #ffffff, #afd0ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            line-height: 1.1;
-            text-shadow: 0 8px 12px #001438;
-        }
-        .identity .tagline {
-            font-size: 1.6rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #b0d2ff;
-            margin-top: 0.3rem;
-        }
-        .identity .tagline i {
-            color: #3aa8ff;
-        }
+.page{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transform:translateX(80px) scale(.96);
+    transition:.6s ease;
+    pointer-events:none;
+}
 
-        .stat-pack {
-            display: flex;
-            gap: 2.5rem;
-            background: #0c1a30aa;
-            padding: 1.2rem 2.2rem;
-            border-radius: 80px;
-            border: 1px solid #2389df;
-            box-shadow: 0 25px 30px -15px #000000, 0 0 20px #0055aa;
-            backdrop-filter: blur(8px);
-        }
-        .stat-item {
-            text-align: center;
-        }
-        .stat-num {
-            font-size: 2.4rem;
-            font-weight: 800;
-            background: linear-gradient(white, #a0c8ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .stat-label {
-            font-size: 1rem;
-            letter-spacing: 0.1em;
-            color: #adcbff;
-        }
-        .stat-label i {
-            color: #50d0a0;
-        }
+.page.active{
+    opacity:1;
+    transform:none;
+    pointer-events:auto;
+}
 
-        /* page 2 — description + photo strip (first photo) */
-        .page-2 {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            align-items: center;
-        }
-        .desc-wide {
-            flex: 2 1 300px;
-            font-size: 1.3rem;
-            background: #0a1830b0;
-            padding: 1.8rem 2.2rem;
-            border-radius: 3rem;
-            border-left: 6px solid #2aa9ff;
-            box-shadow: -10px 15px 30px #00000070;
-            backdrop-filter: blur(4px);
-            line-height: 1.6;
-        }
-        .desc-wide strong {
-            color: white;
-            font-weight: 700;
-        }
-        .photo-tile {
-            flex: 1 1 200px;
-            background: #102036;
-            border-radius: 2.5rem;
-            padding: 1.2rem 1.2rem 1.5rem;
-            border: 2px solid #3299ff;
-            transform: rotateY(3deg) translateZ(20px);
-            box-shadow: 20px 20px 30px #000000b0, 0 0 30px #0080ff80;
-            text-align: center;
-        }
-        .photo-placeholder {
-            width: 100%;
-            aspect-ratio: 1 / 1.1;
-            background: linear-gradient(145deg, #1b3a5e, #0a1a2e);
-            border-radius: 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #b0e0ff;
-            border: 1px solid cyan;
-            box-shadow: inset 0 0 30px #0055aa;
-            font-size: 1rem;
-        }
-        .photo-placeholder i {
-            font-size: 4rem;
-            margin-bottom: 0.5rem;
-            color: #9fcbff;
-            text-shadow: 0 0 15px white;
-        }
-        .photo-caption {
-            margin-top: 0.8rem;
-            font-weight: 600;
-            color: #c5e2ff;
-        }
+/* shared */
+.card{
+    background:rgba(5,15,30,.7);
+    border-radius:2.5rem;
+    padding:2rem;
+    height:100%;
+    border:1px solid #2e5580;
+}
 
-        /* page 3 — three core tiles (exactly as second screenshot) + second photo integrated */
-        .page-3 {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            align-items: stretch;
-        }
-        .tiles-row {
-            flex: 3;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.8rem;
-        }
-        .mini-tile {
-            flex: 1 1 150px;
-            background: #0d1f38e0;
-            backdrop-filter: blur(8px);
-            border: 1px solid #0066cc;
-            border-radius: 2rem;
-            padding: 1.8rem 0.8rem;
-            text-align: center;
-            transform: translateZ(30px) rotateY(0.5deg);
-            box-shadow: 0 20px 25px -8px #000000, 0 0 0 1px #40a0ff inset;
-            transition: 0.2s;
-        }
-        .mini-tile:hover {
-            transform: translateZ(45px) scale(1.02);
-            border-color: #1ed0ff;
-            box-shadow: 0 30px 35px -10px #001e3c, 0 0 30px #0084ff;
-        }
-        .tile-big-num {
-            font-size: 3.2rem;
-            font-weight: 800;
-            background: linear-gradient(white, #80c0ff);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            filter: drop-shadow(0 6px 6px black);
-        }
-        .tile-head {
-            font-size: 1.2rem;
-            letter-spacing: 0.1em;
-            font-weight: 600;
-            color: #bdd9ff;
-        }
-        .tile-sub {
-            font-size: 0.9rem;
-            margin-top: 0.8rem;
-            color: #70b0ff;
-            border-top: 1px dashed #2b5580;
-            padding-top: 0.5rem;
-        }
-        .tile-sub i {
-            color: #3ed0a0;
-        }
+/* page 1 */
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:2rem;
+    flex-wrap:wrap;
+}
+.header h1{
+    font-size:3.5rem;
+    background:linear-gradient(white,#9fc9ff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+.tagline{
+    font-size:1.4rem;
+    color:#9fc9ff;
+}
+.stats{
+    display:flex;
+    gap:2rem;
+    background:#0c1a30;
+    padding:1rem 2rem;
+    border-radius:100px;
+}
+.stat{text-align:center}
+.stat b{font-size:2.2rem}
 
-        /* second photo tile inside page 3 */
-        .photo-tile-2 {
-            flex: 1 1 200px;
-            background: #0a1c34;
-            border-radius: 2.2rem;
-            padding: 1rem 1rem 1.5rem;
-            border: 2px solid #0a9eff;
-            transform: rotateY(-2deg) translateZ(30px);
-            box-shadow: -20px 20px 35px #000000, 0 0 30px #0077ff;
-            text-align: center;
-        }
+/* photos */
+.photo-box{
+    background:#102036;
+    border-radius:2rem;
+    padding:1rem;
+    border:2px solid #3299ff;
+    text-align:center;
+}
+.photo-box img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    border-radius:1.5rem;
+}
+.caption{margin-top:.6rem;color:#c5e2ff}
 
-        /* page 4 — final links & extra photo (third photo) */
-        .page-4 {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .button-panel {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-        .btn-3d {
-            padding: 1rem 3rem;
-            font-size: 1.6rem;
-            font-weight: 600;
-            border-radius: 80px;
-            background: rgba(15, 30, 55, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid #4ab0ff;
-            color: white;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.8rem;
-            box-shadow: 0 25px 30px -12px #000000e0, 0 0 20px #0099ff;
-            transform: translateZ(35px);
-            transition: 0.15s;
-            cursor: default;
-            text-decoration: none;
-        }
-        .btn-3d i {
-            font-size: 1.8rem;
-        }
-        .btn-primary-3d {
-            background: linear-gradient(160deg, #003da0, #001b50);
-            border-color: #9ad0ff;
-            box-shadow: 0 25px 35px -10px #00166b, 0 0 40px #0080ff;
-        }
+/* page 2 */
+.page2{
+    display:flex;
+    gap:2rem;
+    align-items:center;
+    flex-wrap:wrap;
+}
+.desc{
+    flex:2;
+    font-size:1.2rem;
+    line-height:1.6;
+}
 
-        .photo-tile-3 {
-            flex: 0 1 240px;
-            background: #102c44;
-            border-radius: 2.5rem;
-            padding: 1.2rem;
-            border: 2px solid #0a9eff;
-            transform: rotateY(4deg) translateZ(25px);
-            box-shadow: 20px 20px 30px black, 0 0 30px #0077ff;
-        }
+/* page 3 */
+.tiles{
+    display:flex;
+    gap:1.5rem;
+    flex-wrap:wrap;
+}
+.tile{
+    flex:1;
+    background:#0d1f38;
+    padding:2rem;
+    border-radius:2rem;
+    text-align:center;
+    border:1px solid #40a0ff;
+}
+.tile h2{
+    font-size:3rem;
+}
 
-        /* footer line (page 5) */
-        .footer-note {
-            margin-top: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transform: translateZ(20px);
-            color: #90b0e0;
-            border-top: 1px solid #2f5f9f;
-            padding-top: 1.5rem;
-            font-size: 1.1rem;
-        }
-        .footer-note i {
-            color: #50d0a0;
-        }
-        .social a {
-            color: #b5d0ff;
-            margin-left: 2rem;
-            font-size: 1.7rem;
-            transition: 0.2s;
-        }
-        .social a:hover {
-            color: white;
-            text-shadow: 0 0 20px cyan;
-        }
+/* page 4 */
+.actions{
+    display:flex;
+    gap:2rem;
+    flex-wrap:wrap;
+    align-items:center;
+}
+.btn{
+    padding:1rem 2.5rem;
+    border-radius:100px;
+    background:#0a2a55;
+    border:1px solid #50b0ff;
+    color:white;
+    font-size:1.3rem;
+    cursor:pointer;
+}
 
-        /* ambient glows */
-        .ambient-glow {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: #0055ff20;
-            border-radius: 50%;
-            filter: blur(90px);
-            z-index: -1;
-            top: -100px;
-            right: -50px;
-        }
-        .ambient-glow2 {
-            width: 500px;
-            height: 500px;
-            background: #4000ff20;
-            bottom: -150px;
-            left: -100px;
-            filter: blur(120px);
-            position: absolute;
-            z-index: -1;
-        }
-
-        @media (max-width: 800px) {
-            .page-1, .page-2, .page-3, .page-4 {
-                flex-direction: column;
-            }
-            .stat-pack {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-    </style>
+/* nav */
+.nav{
+    margin-top:1.5rem;
+    display:flex;
+    justify-content:space-between;
+}
+.nav button{
+    padding:.7rem 2rem;
+    border-radius:50px;
+    border:1px solid #50b0ff;
+    background:#061a33;
+    color:white;
+    cursor:pointer;
+}
+</style>
 </head>
+
 <body>
-    <div style="position: relative; width: 100%;">
-        <div class="ambient-glow"></div>
-        <div class="ambient-glow2"></div>
 
-        <div class="book-3d">
-            <div class="pages-container">
+<div class="book">
 
-                <!-- PAGE 1 : exactly top of screenshot (3) — name, tagline, stats 4 / 10k / top 50 -->
-                <div class="page page-1">
-                    <div class="identity">
-                        <h1>Ajaz Hussain</h1>
-                        <div class="tagline">
-                            <i class="fas fa-microchip"></i> building minds & machines
-                        </div>
-                    </div>
-                    <div class="stat-pack">
-                        <div class="stat-item">
-                            <div class="stat-num">4</div>
-                            <div class="stat-label"><i class="fas fa-lightbulb"></i> BCI INNOVATIONS</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-num">10k</div>
-                            <div class="stat-label"><i class="fas fa-home"></i> HOME AUTOMATION</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-num">top 50</div>
-                            <div class="stat-label"><i class="fas fa-globe"></i> GLOBAL SUMMIT '24</div>
-                        </div>
-                    </div>
-                </div>
+<div class="pages">
 
-                <!-- PAGE 2 : description (faculty/creator) + first photo (photo 1/3) -->
-                <div class="page page-2">
-                    <div class="desc-wide">
-                        <strong>Faculty at MSME PPDC Srinagar · NIT Srinagar.</strong> Creator of the world‑top‑50 soft robotic glove, affordable BCI devices for paralysis, and India’s representative at Japan International Youth Summit 2024.
-                    </div>
-                    <div class="photo-tile">
-                        <div class="Aijaz.jpg">
-                            <i class="fas fa-robot"></i>
-                            <span>soft robotic glove</span>
-                            <span style="font-size:0.8rem; margin-top: 0.3rem;">⭐ world top 50</span>
-                        </div>
-                        <div class="photo-caption"><i class="fas fa-camera"></i> innovation lab · 2024</div>
-                    </div>
-                </div>
-
-                <!-- PAGE 3 : three core tiles (exactly "4 BCI INNOVATIONS brain-drive tech / 10k HOME AUTOMATION smart living / top 50 GLOBAL SUMMIT '24 JAPAN REPRESENTATIVE" ) plus second photo -->
-                <div class="page page-3">
-                    <div class="tiles-row">
-                        <!-- tile 1 -->
-                        <div class="mini-tile">
-                            <div class="tile-big-num">4</div>
-                            <div class="tile-head">BCI INNOVATIONS</div>
-                            <div class="tile-sub"><i class="fas fa-brain"></i> brain-drive tech</div>
-                        </div>
-                        <!-- tile 2 -->
-                        <div class="mini-tile">
-                            <div class="tile-big-num">10k</div>
-                            <div class="tile-head">HOME AUTOMATION</div>
-                            <div class="tile-sub"><i class="fas fa-home"></i> smart living</div>
-                        </div>
-                        <!-- tile 3 (special) -->
-                        <div class="mini-tile">
-                            <div class="tile-big-num">top 50</div>
-                            <div class="tile-head">GLOBAL SUMMIT '24</div>
-                            <div class="tile-sub"><i class="fas fa-medal"></i> JAPAN REPRESENTATIVE</div>
-                        </div>
-                    </div>
-                    <!-- second photo -->
-                    <div class="photo-tile-2">
-                        <div class="image.jpg" style="aspect-ratio: 1/1;">
-                            <i class="fas fa-hand-peace"></i>
-                            <span>youth summit</span>
-                            <span style="font-size:0.75rem;">Japan 2024</span>
-                        </div>
-                        <div class="photo-caption"><i class="fas fa-plane"></i> representative</div>
-                    </div>
-                </div>
-
-                <!-- PAGE 4 : [Explore Work] [Connect] buttons + third photo -->
-                <div class="page page-4">
-                    <div class="button-panel">
-                        <a class="btn-3d btn-primary-3d" onclick="alert('✨ Explore work — 3D portfolio demo')"><i class="fas fa-cube"></i> Explore Work</a>
-                        <a class="btn-3d" onclick="alert('🤝 Connect — interactive card')"><i class="fas fa-handshake"></i> Connect</a>
-                    </div>
-                    <!-- third photo -->
-                    <div class="photo-tile-3">
-                        <div class="msme.jpeg" style="aspect-ratio: 1/0.9;">
-                            <i class="fas fa-star"></i>
-                            <span>affordable BCI</span>
-                            <span style="font-size:0.7rem;">paralysis assist</span>
-                        </div>
-                        <div class="photo-caption"><i class="fas fa-bolt"></i> device prototype</div>
-                    </div>
-                </div>
-
-                <!-- footer line (extra) with social icons — matches the "4 10k top 50" theme summary -->
-                <div class="footer-note">
-                    <span><i class="fas fa-brain"></i> 4 BCI innovations · 10k home automation · top 50 global summit ‘24</span>
-                    <span class="social">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#"><i class="fab fa-github"></i></a>
-                    </span>
-                </div>
-
-            </div> <!-- pages-container -->
-        </div> <!-- book-3d -->
+<!-- PAGE 1 -->
+<div class="page active">
+    <div class="card header">
+        <div>
+            <h1>Ajaz Hussain</h1>
+            <div class="tagline"><i class="fas fa-microchip"></i> building minds & machines</div>
+        </div>
+        <div class="stats">
+            <div class="stat"><b>4</b><br>BCI</div>
+            <div class="stat"><b>10k</b><br>Automation</div>
+            <div class="stat"><b>Top 50</b><br>Global</div>
+        </div>
     </div>
-    <script>console.log("multi‑page 3D profile with photos – Ajaz Hussain")</script>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+    <div class="card page2">
+        <div class="desc">
+            <b>Faculty at MSME PPDC Srinagar · NIT Srinagar</b><br><br>
+            Creator of world-top-50 soft robotic glove, affordable BCI devices for paralysis and India’s representative at Japan Youth Summit 2024.
+        </div>
+        <div class="photo-box">
+            <img src="Aijaz.jpg" alt="Ajaz Hussain">
+            <div class="caption">Innovation Lab · 2024</div>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+    <div class="card page2">
+        <div class="tiles">
+            <div class="tile">
+                <h2>4</h2>
+                BCI Innovations
+            </div>
+            <div class="tile">
+                <h2>10k</h2>
+                Home Automation
+            </div>
+            <div class="tile">
+                <h2>Top 50</h2>
+                Global Summit
+            </div>
+        </div>
+        <div class="photo-box">
+            <img src="image.jpg" alt="Japan Summit">
+            <div class="caption">Japan · 2024</div>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+    <div class="card actions">
+        <div>
+            <button class="btn">🚀 Explore Work</button>
+            <button class="btn">🤝 Connect</button>
+        </div>
+        <div class="photo-box">
+            <img src="msme.jpeg" alt="BCI Device">
+            <div class="caption">BCI Prototype</div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<!-- NAV -->
+<div class="nav">
+    <button onclick="prev()">⬅ Prev</button>
+    <button onclick="next()">Next ➡</button>
+</div>
+
+</div>
+
+<script>
+let i=0;
+const pages=document.querySelectorAll('.page');
+function show(n){
+    pages.forEach(p=>p.classList.remove('active'));
+    pages[n].classList.add('active');
+}
+function next(){ if(i<pages.length-1){i++;show(i)} }
+function prev(){ if(i>0){i--;show(i)} }
+</script>
+
 </body>
 </html>
