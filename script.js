@@ -1,4 +1,4 @@
-const sections = document.querySelectorAll('.section');
+const posts = document.querySelectorAll('.post');
 
 const observer = new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
@@ -8,7 +8,4 @@ const observer = new IntersectionObserver(entries=>{
     });
 },{threshold:0.2});
 
-sections.forEach(sec=>{
-    sec.classList.add('hidden');
-    observer.observe(sec);
-});
+posts.forEach(post=>observer.observe(post));
